@@ -1,0 +1,8 @@
+{
+  "errors": [
+    {
+      "errorCode": "ERROR_CODE_16",
+      "description": "You have entered the wrong specific code for registration which is given by the teacher!"
+    }
+  ]
+}

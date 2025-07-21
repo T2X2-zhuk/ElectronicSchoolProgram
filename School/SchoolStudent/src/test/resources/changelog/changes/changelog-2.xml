@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+
+    <changeSet id="5" author="Tarasov">
+        <createTable tableName="specific_code_for_registration_in_school">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="specific_code_for_registration_for_student" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="specific_code_for_registration_for_teacher" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Tarasov" id="6">
+        <createIndex indexName="ix_specificCodeForRegistrationForStudent"
+                     tableName="specific_code_for_registration_in_school"
+                     unique="true">
+            <column name="specific_code_for_registration_for_student"/>
+        </createIndex>
+
+        <createIndex indexName="ix_specificCodeForRegistrationForTeacher"
+                     tableName="specific_code_for_registration_in_school"
+                     unique="true">
+            <column name="specific_code_for_registration_for_teacher"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

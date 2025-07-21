@@ -1,0 +1,25 @@
+version: '1'
+
+networks:
+  danil-net-electronic-school:
+
+services:
+  mysql-container2:
+    networks: [danil-net-electronic-school]
+    container_name: mysql-container2
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: fkmdbyjdbx383
+    volumes:
+      - ./mysql-database-init:/docker-entrypoint-initdb.d
+    ports:
+      - "3000:3306"
+
+  school-student:
+    networks: [danil-net-electronic-school]
+    container_name: school-student
+    image: school-student:1.0.1
+    ports:
+      - "8093:8080"
+    depends_on:
+      - mysql-container2

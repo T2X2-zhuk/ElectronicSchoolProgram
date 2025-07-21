@@ -1,0 +1,10 @@
+{
+  "firstName" : "Gondor",
+  "lastName" : "Kalon",
+  "fatherland" : "Daronuma",
+  "email" : null,
+  "password" : "dara23233" ,
+  "number" : 5,
+  "category" : "A",
+  "specificCodeForRegistration" : "StudentPassword33324"
+}
