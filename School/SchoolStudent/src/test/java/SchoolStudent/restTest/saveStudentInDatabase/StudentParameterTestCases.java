@@ -1,14 +1,12 @@
-package SchoolStudent.restTest.saveStudentInDatabase.student;
+package SchoolStudent.restTest.saveStudentInDatabase;
 
-
-import SchoolStudent.restTest.saveStudentInDatabase.SaveStudentInDatabaseTestCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
 public class StudentParameterTestCases extends SaveStudentInDatabaseTestCase {
 
-    private static final String TEST_FILE_BASE_FOLDER = "student";
+    private static final String TEST_FILE_BASE_FOLDER = "forSaveStudent";
 
     @Test
     @DisplayName("ERROR_CODE_1_first_name_must_not_be_null")

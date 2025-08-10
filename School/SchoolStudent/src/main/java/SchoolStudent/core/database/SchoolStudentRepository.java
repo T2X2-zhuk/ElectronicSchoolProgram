@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +23,11 @@ public interface SchoolStudentRepository extends JpaRepository<SchoolStudent,Lon
     Optional<SchoolStudent> findByfatherland(String fatherland);
     Optional<SchoolStudent> findByemail(String email);
     Optional<SchoolStudent> findBypassword(String password);
-    Optional<SchoolStudent> deleteBypassword(String password);
+
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM SchoolStudent st WHERE st.password = :password")
+    void deleteByPassword(@Param("password") String password);
 
     @Modifying
     @Query(value = "UPDATE SchoolStudent st SET st.classes_id = :new_classes_id where st.email = :email")

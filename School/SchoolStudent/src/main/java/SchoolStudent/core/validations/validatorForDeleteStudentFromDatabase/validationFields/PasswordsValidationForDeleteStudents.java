@@ -21,7 +21,7 @@ class PasswordsValidationForDeleteStudents extends RequestFieldsValidationForDel
     public Optional<ValidationErrorDTO> validate(List<String> passwords) {
         List<String> passwordsList = passwords.stream().filter(password -> !suchPasswordNotInDatabase(password)).toList();
         if (passwordsList.isEmpty()){
-            return Optional.of(errorFactory.buildError("ERROR_CODE_4")) ;
+            return Optional.of(errorFactory.buildError("ERROR_CODE_4"));
         }
         return Optional.empty();
     }
