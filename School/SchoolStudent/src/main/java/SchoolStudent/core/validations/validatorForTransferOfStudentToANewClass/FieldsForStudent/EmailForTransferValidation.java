@@ -47,6 +47,6 @@ class EmailForTransferValidation extends TransferOfStudentToANewClassRequestFiel
     }
 
     private boolean isNullOrBlank(TransferOfStudentToANewClassRequest request) {
-        return request.getEmail() == null || request.getEmail().isEmpty();
+        return request.getEmail() == null || request.getEmail().isEmpty() || request.getEmail().isBlank() ;
     }
 }

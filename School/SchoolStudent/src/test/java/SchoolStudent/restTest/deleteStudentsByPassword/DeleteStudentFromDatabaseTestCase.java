@@ -20,7 +20,7 @@ import static uk.org.webcompere.modelassert.json.JsonAssertions.assertJson;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = SchoolStudentsProgram.class)
 @AutoConfigureMockMvc
-public abstract class DeleteStudentFromDatabaseTestCase {
+abstract class DeleteStudentFromDatabaseTestCase {
 
     @Autowired private MockMvc mockMvc;
 

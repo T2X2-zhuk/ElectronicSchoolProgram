@@ -49,6 +49,6 @@ class FieldCategoryClassForTransferStudentValidation extends TransferOfStudentTo
     }
 
     private boolean isNullOrBlank(TransferOfStudentToANewClassRequest request) {
-        return request.getCategory() == null || request.getCategory().isEmpty();
+        return request.getCategory() == null || request.getCategory().isEmpty() || request.getCategory().isBlank();
     }
 }

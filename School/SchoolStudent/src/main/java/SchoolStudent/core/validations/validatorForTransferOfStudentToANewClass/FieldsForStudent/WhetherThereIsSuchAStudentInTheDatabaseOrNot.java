@@ -6,13 +6,16 @@ import SchoolStudent.core.request.TransferOfStudentToANewClassRequest;
 import SchoolStudent.core.validations.ValidationErrorFactory;
 import SchoolStudent.core.validations.validatorForTransferOfStudentToANewClass.TransferOfStudentToANewClassRequestFieldsValidationImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+@Component
 class WhetherThereIsSuchAStudentInTheDatabaseOrNot extends TransferOfStudentToANewClassRequestFieldsValidationImpl {
 
     @Autowired private SchoolStudentRepository repository;
 
     @Autowired private ValidationErrorFactory factory;
+
     @Override
     public Optional<ValidationErrorDTO> validate(TransferOfStudentToANewClassRequest request) {
         if (repository.findByemail(request.getEmail()).isEmpty()){

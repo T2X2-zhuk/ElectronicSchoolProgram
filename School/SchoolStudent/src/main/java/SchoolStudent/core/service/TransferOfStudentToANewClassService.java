@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class TransferOfStudentToANewClassService {
@@ -32,8 +34,8 @@ public class TransferOfStudentToANewClassService {
         SchoolClass schoolClass = repository2.findBynumberAndcategory(request.getNewClassNumber(), request.getCategory());
         repository.forUpdateStudentData(request.getEmail(),schoolClass);
         TransferOfStudentToANewClassResponse response = new TransferOfStudentToANewClassResponse();
-        SchoolStudent schoolStudent = repository.findByemail(request.getEmail()).get();
-        response.setMessage(schoolStudent.getFirst_name() + " " + schoolStudent.getLast_name() + " " + schoolStudent.getFatherland() + " - " + "successfully transferred to " + schoolStudent.getClasses_id().getNumber() + " " + schoolStudent.getClasses_id().getCategory() + " class!");
+        Optional<SchoolStudent> schoolStudent = repository.findByemail(request.getEmail());
+        response.setMessage(schoolStudent.get().getFirst_name() + " " + schoolStudent.get().getLast_name() + " " + schoolStudent.get().getFatherland() + " - " + "successfully transferred to " + schoolClass.getNumber() + " " + schoolClass.getCategory() + " class!");
         return response;
     }
     private TransferOfStudentToANewClassResponse unsuccessful(TransferOfStudentToANewClassRequest request){

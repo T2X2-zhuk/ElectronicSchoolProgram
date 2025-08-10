@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-public class StudentParameterTestCases extends SaveStudentInDatabaseTestCase {
+ class SaveStudentInDatabaseTest extends SaveStudentInDatabaseTestCase {
 
     private static final String TEST_FILE_BASE_FOLDER = "forSaveStudent";
 

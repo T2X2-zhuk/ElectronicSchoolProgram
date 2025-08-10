@@ -21,6 +21,7 @@ public interface SchoolStudentRepository extends JpaRepository<SchoolStudent,Lon
     @Query("Select st FROM SchoolStudent st where st.last_name =:last_name")
     List<SchoolStudent> findBylast_name(@Param("last_name")String last_name);
     Optional<SchoolStudent> findByfatherland(String fatherland);
+
     Optional<SchoolStudent> findByemail(String email);
     Optional<SchoolStudent> findBypassword(String password);
 

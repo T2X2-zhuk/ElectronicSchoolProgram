@@ -1,4 +1,4 @@
-package SchoolStudent.restTest.saveStudentInDatabase;
+package SchoolStudent.restTest.updateStudentInDatabase;
 
 
 import SchoolStudent.SchoolStudentsProgram;
@@ -16,16 +16,17 @@ import org.springframework.test.web.servlet.MvcResult;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static uk.org.webcompere.modelassert.json.JsonAssertions.assertJson;
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = SchoolStudentsProgram.class)
 @AutoConfigureMockMvc
- abstract class SaveStudentInDatabaseTestCase {
+ abstract class UpdateStudentInDatabaseTestCase {
 
     @Autowired private MockMvc mockMvc;
 
     @Autowired private JsonFileReader jsonFileReader;
 
-    private static final String BASE_URL = "/school/student/api/saveStudent";
+    private static final String BASE_URL = "/school/student/api/updateStudent";
 
     protected void executeAndCompare(String testCaseFolderName) throws Exception {
         executeAndCompare(
