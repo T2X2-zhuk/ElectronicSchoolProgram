@@ -13,7 +13,7 @@ services:
     volumes:
       - ./mysql-database-init:/docker-entrypoint-initdb.d
     ports:
-      - "3000:3306"
+      - "3001:3306"
 
   school-student:
     networks: [danil-net-electronic-school]

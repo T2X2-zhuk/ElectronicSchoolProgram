@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Show all students by school class</title>
+
+    <style>
+body {
+  background-size: cover;
+  transition: background-image 1s ease-in-out;
+   background-repeat: no-repeat;
+    background-position: center center; /* Центрируем изображение */
+  height: 100vh; /* Задаем высоту страницы 100% */
+  margin: 0; /* Убираем отступы */
+}
+
+ #time-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: black;
+    background-color: green;
+    padding: 5px;
+    border: 1px solid black;
+  }
+</style>
+
+    <style>
+    .white-background-label {
+        background-color: white;
+    }
+</style>
+</head>
+<body>
+<form action="#" th:action="@{get-all-students-by-school-class}" th:object="${request}" method="post">
+    <label style="color : white" for="number">Number class where student will be teaching:</label>
+    <input type="number" id="number" th:field="${request.number}"><br><br>
+    <label style="color : white" for="category">Class category :</label>
+    <input type="text" id="category" th:field="${request.category}"><br><br>
+    <button type="submit">Отправить</button>
+</form>
+
+<br>
+
+<td th:if="${response.errors != null} ">
+    <h3 style="color : blue">ERRORS</h3>
+    <tr th:each="error : ${response.errors}">
+        <label class="white-background-label" style="color : blue" th:text="${error.errorCode}" ></label>
+        <label class="white-background-label" style="color : blue" th:text="${error.description}"></label>
+        <br>
+        <br>
+    </tr>
+</td>
+<br>
+<br>
+
+<td th:if="${response.schoolStudentList != null} ">
+    <h3 class="white-background-label" style="color : black">Students</h3>
+    <tr th:each="student : ${response.schoolStudentList}">
+        <label class="white-background-label" style="color : black" th:text="${student.first_name}" ></label>
+        <label class="white-background-label" style="color : black" th:text="${student.last_name}"></label>
+        <label class="white-background-label" style="color : black" th:text="${student.fatherland}" ></label>
+        <label class="white-background-label" style="color : black" th:text="${student.classes_id.number}" ></label>
+        <label class="white-background-label" style="color : black" th:text="${student.classes_id.category}" ></label>
+        <label class="white-background-label" style="color : black" th:text="${student.email}"></label>
+        <br>
+        <br>
+    </tr>
+</td>
+
+<br>
+
+<a style="color : white" href="http://localhost:8093/update-student" target="_blank">Go to return to the student update page</a>
+
+
+<div id="time-container"></div>
+
+<script>
+  function updateTime() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString();
+    document.getElementById("time-container").textContent = timeString;
+  }
+
+  setInterval(updateTime, 1000);
+  updateTime();
+</script>
+
+<script>
+function setSeasonBackground() {
+  const now = new Date();
+  const month = now.getMonth(); // 0-11
+  let imageUrl;
+
+  if (month >= 3 && month <= 5) {
+    imageUrl = 'url("https://img.freepik.com/free-photo/beautiful-shot-green-field-covered-with-yellow-flowers-near-cherry-blossom-trees_181624-24215.jpg?semt=ais_hybrid&w=740")'; // Весна
+  } else if (month >= 6 && month <= 8) {
+    imageUrl = 'url("https://cs5.pikabu.ru/post_img/big/2015/03/22/6/1427016935_438550143.jpg")'; // Лето
+  } else if (month >= 9 && month <= 11) {
+    imageUrl = 'url("https://online.vsu.by/wp-content/uploads/2021/11/%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%BE%D1%81%D0%B5%D0%BD%D0%B8.jpg")'; // Осень
+  } else {
+    imageUrl = 'url("https://emosurff.com/i/00019J0r3n0a/1386792659_zimnie-peyzazhi-5.jpg")'; // Зима
+  }
+
+  document.body.style.backgroundImage = imageUrl;
+}
+
+setSeasonBackground(); // Вызываем при загрузке страницы
+
+// Если нужно, чтобы фон менялся автоматически, можно добавить
+// setInterval(setSeasonBackground, 60000); // Каждую минуту
+</script>
+</body>
+</html>

@@ -46,12 +46,6 @@
     </changeSet>
 
     <changeSet author="Tarasov" id="3">
-        <createIndex indexName="ix_fatherland"
-                     tableName="school_students"
-                     unique="true">
-            <column name="fatherland"/>
-        </createIndex>
-
         <createIndex indexName="ix_email"
                      tableName="school_students"
                      unique="true">

@@ -29,12 +29,6 @@ public class StudentParameterTestCases extends SaveStudentInDatabaseTestCase {
     }
 
     @Test
-    @DisplayName("ERROR_CODE_4_fatherland_should_not_be_repeated")
-    public void check_ERROR_CODE_4() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_4_fatherland_should_not_be_repeated");
-    }
-
-    @Test
     @DisplayName("ERROR_CODE_5_field_email_must_not_be_empty")
     public void check_ERROR_CODE_5() throws Exception {
         executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_5_field_email_must_not_be_empty");
