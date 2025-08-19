@@ -5,7 +5,7 @@ import SchoolStudent.core.database.SchoolClassRepository;
 import SchoolStudent.core.domain.SchoolStudent;
 import SchoolStudent.core.request.RegistrationStudentInDatabaseRequest;
 import SchoolStudent.core.response.RegistrationStudentInDatabaseResponse;
-import SchoolStudent.core.validations.validatorForRegistrationStudent.FieldForRegistrationStudentValidator;
+import SchoolStudent.core.validations.forRegistrationStudent.FieldForRegistrationStudentValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

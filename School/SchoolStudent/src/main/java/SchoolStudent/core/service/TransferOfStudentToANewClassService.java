@@ -7,7 +7,7 @@ import SchoolStudent.core.domain.SchoolClass;
 import SchoolStudent.core.domain.SchoolStudent;
 import SchoolStudent.core.request.TransferOfStudentToANewClassRequest;
 import SchoolStudent.core.response.TransferOfStudentToANewClassResponse;
-import SchoolStudent.core.validations.validatorForTransferOfStudentToANewClass.FieldForTransferOfStudentToANewClassValidator;
+import SchoolStudent.core.validations.forTransferOfStudentToANewClass.FieldForTransferOfStudentToANewClassValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -6,7 +6,7 @@ import SchoolStudent.core.domain.SchoolClass;
 import SchoolStudent.core.domain.SchoolStudent;
 import SchoolStudent.core.request.GetAllStudentsBySchoolClassRequest;
 import SchoolStudent.core.response.GetAllStudentsBySchoolClassResponse;
-import SchoolStudent.core.validations.validatorForGetAllStudent.GetAllStudentsBySchoolClassValidator;
+import SchoolStudent.core.validations.forGetAllStudent.GetAllStudentsBySchoolClassValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
