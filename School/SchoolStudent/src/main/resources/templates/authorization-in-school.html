@@ -41,12 +41,16 @@ body {
 
     <button type="submit">Войти</button>
 </form>
+<br>
+
+<a class="white-background-label" href="register-student">Registration student</a>
 
 <div th:if="${errors != null}">
     <ul>
-        <li th:each="error : ${errors}" style="color:red"></li>
-        <label class="white-background-label"  style="color : blue" th:text="${error.errorCode}" ></label>
-        <label class="white-background-label" th:text="${error.description}"></label>
+        <li th:each="error : ${errors}" style="color:red">
+            <label class="white-background-label" th:text="${error.errorCode}"></label>
+            <label class="white-background-label" th:text="${error.description}"></label>
+        </li>
     </ul>
 </div>
 

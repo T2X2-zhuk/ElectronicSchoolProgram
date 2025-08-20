@@ -35,6 +35,10 @@ body {
 <h2>Добро пожаловать, <span th:text="${schoolStudent.first_name}">[Имя]</span>,
     <span th:text="${schoolStudent.last_name}">[Имя]</span>,<span th:text="${schoolStudent.fatherland}">[Имя]</span>!</h2>
 
+<a  class="white-background-label" th:href="@{|get-all-students-by-school-class?number=${schoolStudent.classes_id.number}&category=${schoolStudent.classes_id.category}|}" target="_blank">Go to see the students>
+    Show all students by your school class
+</a>
+
 <div id="time-container"></div>
 
 <script>
