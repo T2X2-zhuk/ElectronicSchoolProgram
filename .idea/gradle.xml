@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/School" />
+            <option value="$PROJECT_DIR$/School/school-lessons-and-certificates" />
             <option value="$PROJECT_DIR$/School/school-student-app" />
           </set>
         </option>

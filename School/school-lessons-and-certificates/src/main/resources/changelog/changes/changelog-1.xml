@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+
+    <changeSet id="1" author="Tarasov">
+        <createTable tableName="lessons">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="description" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Tarasov">
+        <createTable tableName="certificates">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="lesson_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_certificates_lesson"
+                             referencedTableName="lessons"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="first_trimester" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="two_trimester" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="three_trimester" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="annual_subject_assessment" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="Tarasov">
+        <createTable tableName="core_certificates">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="certificate_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_core_certificates_certificate"
+                             referencedTableName="certificates"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="Tarasov">
+        <createTable tableName="student_with_his_core_certificates">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fatherland" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="core_certificate_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_student_core_certificate"
+                             referencedTableName="core_certificates"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

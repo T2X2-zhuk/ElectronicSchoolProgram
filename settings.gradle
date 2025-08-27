@@ -1,3 +1,4 @@
 rootProject.name = 'ElectronicSchoolProgram'
 
 include('School:school-student-app')
+include('School:school-lessons-and-certificates')
