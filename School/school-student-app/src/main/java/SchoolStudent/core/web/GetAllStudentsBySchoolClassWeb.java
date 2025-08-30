@@ -5,7 +5,6 @@ import SchoolStudent.core.request.GetAllStudentsBySchoolClassRequest;
 import SchoolStudent.core.request.TransferOfStudentToANewClassRequest;
 import SchoolStudent.core.response.DeleteStudentFromDatabaseResponse;
 import SchoolStudent.core.response.GetAllStudentsBySchoolClassResponse;
-import SchoolStudent.core.service.DeleteStudentFromDatabaseService;
 import SchoolStudent.core.service.GetAllStudentsBySchoolClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

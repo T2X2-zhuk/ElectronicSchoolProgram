@@ -5,7 +5,7 @@ import SchoolStudent.core.database.SchoolClassRepository;
 import SchoolStudent.core.domain.SchoolStudent;
 import SchoolStudent.core.request.RegistrationStudentInDatabaseRequest;
 import SchoolStudent.core.response.RegistrationStudentInDatabaseResponse;
-import SchoolStudent.core.validations.forRegistrationStudent.FieldForRegistrationStudentValidator;
+import SchoolStudent.core.validations.student.RegistrationStudentValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class RegistrationStudentInDatabaseService {
 
     @Autowired private SchoolStudentRepository repository;
-    @Autowired private FieldForRegistrationStudentValidator validator;
+    @Autowired private RegistrationStudentValidator validator;
     @Autowired private SchoolClassRepository repository2;
 
     public RegistrationStudentInDatabaseResponse execute(RegistrationStudentInDatabaseRequest request){

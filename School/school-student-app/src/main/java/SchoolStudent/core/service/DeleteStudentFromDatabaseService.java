@@ -4,7 +4,7 @@ package SchoolStudent.core.service;
 import SchoolStudent.core.database.SchoolStudentRepository;
 import SchoolStudent.core.request.DeleteStudentFromDatabaseRequest;
 import SchoolStudent.core.response.DeleteStudentFromDatabaseResponse;
-import SchoolStudent.core.validations.forDeleteStudentFromDatabase.ForDeleteStudentValidator;
+import SchoolStudent.core.validations.student.DeleteStudentValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +15,7 @@ import java.util.List;
 public class DeleteStudentFromDatabaseService {
 
     @Autowired private SchoolStudentRepository repository;
-    @Autowired private ForDeleteStudentValidator validator;
+    @Autowired private DeleteStudentValidator validator;
 
     public DeleteStudentFromDatabaseResponse  execute(DeleteStudentFromDatabaseRequest request){
         if (unsuccessfulDelete(request).hasErrors()){

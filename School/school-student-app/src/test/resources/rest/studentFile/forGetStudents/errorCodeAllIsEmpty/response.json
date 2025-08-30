@@ -1,0 +1,12 @@
+{
+  "errors": [
+    {
+      "errorCode": "ERROR_CODE_10",
+      "description": "Field number class must not be empty!"
+    },
+    {
+      "errorCode": "ERROR_CODE_12",
+      "description": "Field category class must not be empty!"
+    }
+  ]
+}

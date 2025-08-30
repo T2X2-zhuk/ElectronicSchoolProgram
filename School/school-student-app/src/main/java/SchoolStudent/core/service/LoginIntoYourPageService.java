@@ -4,7 +4,7 @@ import SchoolStudent.core.database.SchoolStudentRepository;
 import SchoolStudent.core.domain.SchoolStudent;
 import SchoolStudent.core.request.LoginToYourStudentPageRequest;
 import SchoolStudent.core.response.LoginToYourPageForStudentResponse;
-import SchoolStudent.core.validations.loginIntoYourPage.LoginIntoYourPageValidator;
+import SchoolStudent.core.validations.student.LoginIntoStudentPageValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ public class LoginIntoYourPageService {
 
     @Autowired private SchoolStudentRepository repository;
 
-    @Autowired private LoginIntoYourPageValidator validator;
+    @Autowired private LoginIntoStudentPageValidator validator;
 
     public LoginToYourPageForStudentResponse execute(LoginToYourStudentPageRequest request){
         if (unsuccessful(request).hasErrors()){
