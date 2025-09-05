@@ -1,15 +1,11 @@
 package SchoolStudent.core.web;
 
 import SchoolStudent.core.domain.SchoolStudent;
-import SchoolStudent.core.request.DeleteStudentFromDatabaseRequest;
 import SchoolStudent.core.request.LoginToYourStudentPageRequest;
-import SchoolStudent.core.request.RegistrationStudentInDatabaseRequest;
-import SchoolStudent.core.response.DeleteStudentFromDatabaseResponse;
 import SchoolStudent.core.response.LoginToYourPageForStudentResponse;
 import SchoolStudent.core.service.LoginIntoYourPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;

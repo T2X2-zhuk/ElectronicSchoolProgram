@@ -18,7 +18,9 @@ public class CoreCertificate {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @ManyToOne
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student_id;
     @ManyToOne
     @JoinColumn(name = "certificate_id", nullable = false)
     private Certificate certificate_id;

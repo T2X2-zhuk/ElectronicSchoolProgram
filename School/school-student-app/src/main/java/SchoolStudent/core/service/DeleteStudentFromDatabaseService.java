@@ -8,7 +8,11 @@ import SchoolStudent.core.validations.student.DeleteStudentValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -26,7 +30,11 @@ public class DeleteStudentFromDatabaseService {
     }
 
     private DeleteStudentFromDatabaseResponse successfulDelete(DeleteStudentFromDatabaseRequest request){
-        List<String> passwordFilter = request.getPasswords().stream().filter(password -> repository.findBypassword(password).isPresent()).toList();
+        List<String> passwordFilter = Optional.ofNullable(request.getPasswords())
+                .orElse(Collections.emptyList()) // если null → пустой список
+                .stream()
+                .filter(password -> repository.findBypassword(password).isPresent())
+                .toList();
         passwordFilter.forEach(password -> repository.deleteByPassword(password));
         DeleteStudentFromDatabaseResponse response = new DeleteStudentFromDatabaseResponse();
         response.setMessage("Student/Students matching the specified passwords have been successfully deleted.");

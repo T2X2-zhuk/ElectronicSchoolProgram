@@ -36,7 +36,7 @@ public class RegistrationStudentInDatabaseService {
         schoolChild.setClasses_id(repository2.findBynumberAndcategory(request.getNumber(),request.getCategory()));
         repository.save(schoolChild);
         RegistrationStudentInDatabaseResponse response = new RegistrationStudentInDatabaseResponse();
-        response.setMessage(request.getFirstName() + " " + request.getLastName() + " " + request.getFatherland() + " - " + "successfully registered in the database");
+            response.setMessage(request.getFirstName() + " " + request.getLastName() + " " + request.getFatherland() + " - " + "successfully registered in the database");
         return response;
     }
     private RegistrationStudentInDatabaseResponse buildResponseWithErrors(RegistrationStudentInDatabaseRequest request){

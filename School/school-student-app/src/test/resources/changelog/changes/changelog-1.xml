@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
 
-    <changeSet id="1" author="Tarasov">
+    <changeSet id="1" author="Tarasov" context="test">
         <createTable tableName="classes">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -19,7 +19,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2" author="Tarasov">
+    <changeSet id="2" author="Tarasov" context="test">
         <createTable tableName="school_students">
             <column autoIncrement="true" name="id" type="BIGINT">
             <constraints primaryKey="true" />
@@ -45,7 +45,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet author="Tarasov" id="3">
+    <changeSet author="Tarasov" id="3" context="test">
         <createIndex indexName="ix_email"
                      tableName="school_students"
                      unique="true">
@@ -59,7 +59,7 @@
         </createIndex>
     </changeSet>
 
-    <changeSet author="Tarasov" id="4">
+    <changeSet author="Tarasov" id="4" context="test">
         <addForeignKeyConstraint baseTableName="school_students"
                                  baseColumnNames="classes_id"
                                  constraintName="fk_school_students_classes_id"

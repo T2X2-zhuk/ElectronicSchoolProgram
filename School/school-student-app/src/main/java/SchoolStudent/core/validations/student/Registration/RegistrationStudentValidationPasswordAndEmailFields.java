@@ -29,7 +29,8 @@ import java.util.Optional;
 
         }else if (validation.emailYourEmailIsNotCorrectError(request.getEmail()).isPresent()){
             return validation.emailYourEmailIsNotCorrectError(request.getEmail());
-            }else if (validation.suchEmailAlreadyExistsError(request.getEmail()).isPresent()){
+            }
+        else if (validation.suchEmailAlreadyExistsError(request.getEmail()).isPresent()){
                 return validation.suchEmailAlreadyExistsError(request.getEmail());
             }
             return Optional.empty();

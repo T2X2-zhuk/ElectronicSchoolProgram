@@ -6,7 +6,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
 
 
-    <changeSet id="9" author="Tarasov">
+    <changeSet id="9" author="Tarasov" context="test">
         <createTable tableName="teachers">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -42,7 +42,7 @@
                 constraintName="fk_teacher_classes"/>
     </changeSet>
 
-    <changeSet id="10" author="Tarasov">
+    <changeSet id="10" author="Tarasov" context="test">
         <sql>INSERT INTO school_students(first_name, last_name, fatherland, email, password, classes_id)
             VALUES('Harbon', 'Jacknoni' , 'Manivaki', 'bornr5606@gmail.com', 'veramondi' , 4);
         </sql>
