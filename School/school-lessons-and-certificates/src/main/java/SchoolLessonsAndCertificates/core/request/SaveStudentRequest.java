@@ -14,4 +14,7 @@ public class SaveStudentRequest {
     private String firstName;
     private String lastName;
     private String fatherland;
+    private String email;
+    private Long numberClass;
+    private String category;
 }

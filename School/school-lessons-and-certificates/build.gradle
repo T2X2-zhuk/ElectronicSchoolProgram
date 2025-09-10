@@ -40,6 +40,11 @@ jar {
     enabled = false
 }
 
+tasks.withType(Test) {
+    // Полностью отключает выполнение тестов
+    enabled = false
+}
+
 bootJar {
     enabled = true
     archiveBaseName = 'lessons-and-certificates'

@@ -1,8 +1,8 @@
 package SchoolStudent.core.web;
 
 import SchoolStudent.core.domain.SchoolStudent;
-import SchoolStudent.core.request.LoginToYourStudentPageRequest;
-import SchoolStudent.core.response.LoginToYourPageForStudentResponse;
+import SchoolStudent.core.request.student.LoginToYourStudentPageRequest;
+import SchoolStudent.core.response.student.LoginToYourPageForStudentResponse;
 import SchoolStudent.core.service.LoginIntoYourPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

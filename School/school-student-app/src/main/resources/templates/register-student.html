@@ -1,123 +1,206 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Registration Student in database</title>
-
-  <style>
-body {
-  background-size: cover;
-  transition: background-image 1s ease-in-out;
-   background-repeat: no-repeat;
-    background-position: center center; /* Центрируем изображение */
-  height: 100vh; /* Задаем высоту страницы 100% */
-  margin: 0; /* Убираем отступы */
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Registration Student in Database</title>
+    <style>
+        html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%; /* вместо 100vh для корректной прокрутки */
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease;
+    color: white;
 }
 
- #time-container {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    color: black;
-    background-color: green;
-    padding: 5px;
-    border: 1px solid black;
-  }
+body {
+    padding: 20px 0; /* добавляем отступы сверху/снизу */
+}
 
-</style>
+.overlay {
+    background: rgba(0,0,0,0.65);
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    margin: 20px auto; /* вертикальные отступы для прокрутки */
+}
 
-    <style>
-    .white-background-label {
-        background-color: white;
-    }
-</style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #ffecb3;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ffecb3;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);
+            background-color: white;
+            color: black;
+        }
+
+        button {
+            background: linear-gradient(135deg, #42a5f5, #64b5f6);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            width: 100%;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #1e88e5, #42a5f5);
+            transform: scale(1.05);
+        }
+
+        .white-background-label {
+            background-color: white;
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 2px 4px;
+            font-size: 14px;
+        }
+
+        #time-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            background-color: rgba(0, 128, 0, 0.75);
+            padding: 10px 18px;
+            border-radius: 15px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.7);
+            text-align: center;
+            text-shadow: 0 0 8px lime, 0 0 16px lime;
+            z-index: 1000;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
 </head>
 <body>
+<div class="overlay">
+    <h1>Registration Student in Database</h1>
+    <form action="#" th:action="@{register-student}" th:object="${request}" method="post">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" th:field="${request.firstName}">
 
-<h1>Registration student in database</h1>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" th:field="${request.lastName}">
 
-<form action="#" th:action="@{register-student}" th:object="${request}" method="post">
-    <label style="color : white" for="firstName">First Name:</label>
-    <input type="text" id="firstName" th:field="${request.firstName}"><br><br>
+        <label for="fatherland">Fatherland:</label>
+        <input type="text" id="fatherland" th:field="${request.fatherland}">
 
-    <label style="color : white" for="lastName">Last Name:</label>
-    <input type="text" id="lastName" th:field="${request.lastName}"><br><br>
+        <label for="email">Email example - example@gmail.com:</label>
+        <input type="email" id="email" th:field="${request.email}">
 
-    <label style="color : white" for="fatherland">Fatherland:</label>
-        <input type="text" id="fatherland" th:field="${request.fatherland}"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" th:field="${request.password}">
 
-    <label style="color : white" for="email">Email example - example@gmail.com:</label>
-    <input type="email" id="email" th:field="${request.email}"><br><br>
+        <label for="number">Number class where student will be teaching:</label>
+        <input type="number" id="number" th:field="${request.number}">
 
-    <label style="color : white" for="password">Password:</label>
-    <input type="text" id="password" th:field="${request.password}"><br><br>
+        <label for="category">Class category :</label>
+        <input type="text" id="category" th:field="${request.category}">
 
-    <label style="color : white" for="number">Number class where student will be teaching:</label>
-    <input type="number" id="number" th:field="${request.number}"><br><br>
+        <label for="specificCodeForRegistration">Specific code for registration:</label>
+        <input type="text" id="specificCodeForRegistration" th:field="${request.specificCodeForRegistration}">
 
-    <label style="color : white" for="category">Class category :</label>
-    <input type="text" id="category" th:field="${request.category}"><br><br>
+        <button type="submit">Save student</button>
+    </form>
 
-    <label style="color : white" for="specificCodeForRegistration">Specific code for registration:</label>
-    <input  type="text" id="specificCodeForRegistration" th:field="${request.specificCodeForRegistration}"><br><br>
+    <div th:if="${response.errors != null}">
+        <ul>
+            <li th:each="error : ${response.errors}">
+                <label class="white-background-label" style="color:blue" th:text="${error.errorCode}"></label>
+                <label class="white-background-label" th:text="${error.description}"></label>
+            </li>
+        </ul>
+    </div>
 
-    <button style="color : green" type="submit">Save student</button>
-</form>
-
-<td th:if="${response.errors != null} ">
-    <h3 style="color : blue">ERRORS</h3>
-    <tr th:each="error : ${response.errors}">
-        <label class="white-background-label"  style="color : blue" th:text="${error.errorCode}" ></label>
-        <label class="white-background-label" th:text="${error.description}"></label>
-        <br>
-        <br>
-    </tr>
-</td>
-
-<br>
-
-<h3 style="color : violet">
-    <label class="white-background-label" style="color : green"th:if="${response.message != null}"
-           th:text="'Ответ: ' + ${response.message}"></label>
-</h3>
+    <h3 style="color : violet">
+        <label class="white-background-label" style="color : green" th:if="${response.message != null}"
+               th:text="'Ответ: ' + ${response.message}"></label>
+    </h3>
+</div>
 
 <div id="time-container"></div>
 
 <script>
-  function updateTime() {
+    const monthBackgrounds = [
+        "https://img.freepik.com/free-photo/top-view-beautiful-winter-with-copy-space_23-2148720682.jpg",
+        "https://media.istockphoto.com/id/1296158976/ru/%D1%84%D0%BE%D1%82%D0%BE/%D1%80%D1%83%D0%BA%D0%B8-%D0%B6%D0%B5%D0%BD%D1%89%D0%B8%D0%BD%D1%8B-%D0%B2-%D0%B2%D1%8F%D0%B7%D0%B0%D0%BD%D1%8B%D1%85-%D0%B2%D0%B0%D1%80%D0%B5%D0%B6%D0%BA%D0%B8-%D1%81%D0%BE-%D1%81%D0%BD%D0%B5%D0%B6%D0%BD%D1%8B%D0%BC-%D1%81%D0%B5%D1%80%D0%B4%D1%86%D0%B5%D0%BC-%D0%BD%D0%B0-%D1%84%D0%BE%D0%BD%D0%B5-%D1%81%D0%BD%D0%B5%D0%B3%D0%B0.jpg?s=612x612",
+        "https://media.istockphoto.com/id/512150982/ru/%D1%84%D0%BE%D1%82%D0%BE/%D1%80%D0%BE%D0%B7%D0%BE%D0%B2%D1%8B%D0%B9-%D1%86%D0%B2%D0%B5%D1%82%D0%BE%D0%BA-%D0%B2%D0%B8%D1%88%D0%BD%D0%B8.jpg?s=612x612",
+        "https://img.freepik.com/free-photo/flat-lay-composition-flowers-with-copyspace_23-2148134876.jpg?semt=ais_hybrid",
+        "https://ulus.media/wp-content/uploads/2024/05/whatsapp-image-2024-05-01-at-10.38.26.jpeg",
+        "https://lh6.googleusercontent.com/proxy/jgXRFfgDgeH3qNcGP1sO9SkMbqfnGhXYDpKfEw8VrQM9NEVenEcfmPpHmR1jRq6rswK74cQp4__y7UIu9IoHOHetKSK47i0PsdHOvoQ",
+        "https://www.zastavki.com/pictures/600x382/2014Nature___Flowers_Flowers_sky_glade_076309_33.jpg",
+        "https://img.freepik.com/free-vector/watercolor-background-thanksgiving-celebration_52683-140730.jpg",
+        "https://propowerpoint.ru/fony/pervoe-sentyabrya/1.jpg",
+        "https://r1.nubex.ru/s14825-ea3/f1377_69/%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C-%D0%BE%D1%81%D0%B5%D0%BD%D1%8C1.jpg",
+        "https://gas-kvas.com/grafic/uploads/posts/2024-01/gas-kvas-com-p-oktyabr-nadpis-krasivaya-na-prozrachnom-fo-44.jpg",
+        "https://kartinki.pics/pics/uploads/posts/2022-08/1660793265_1-kartinkin-net-p-krasivii-fon-dekabr-krasivo-2.jpg"
+    ];
+
     const now = new Date();
-    const timeString = now.toLocaleTimeString();
-    document.getElementById("time-container").textContent = timeString;
-  }
+    const monthIndex = now.getMonth();
+    document.body.style.backgroundImage = `url("${monthBackgrounds[monthIndex]}")`;
 
-  setInterval(updateTime, 1000);
-  updateTime();
+    function updateTime() {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const dateStr = now.toLocaleDateString('ru-RU', options);
+        const timeStr = now.toLocaleTimeString('ru-RU');
+        document.getElementById("time-container").textContent = `${timeStr} — ${dateStr}`;
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime();
 </script>
-
-<script>
-function setSeasonBackground() {
-  const now = new Date();
-  const month = now.getMonth(); // 0-11
-  let imageUrl;
-
-  if (month >= 3 && month <= 5) {
-    imageUrl = 'url("https://img.freepik.com/free-photo/beautiful-shot-green-field-covered-with-yellow-flowers-near-cherry-blossom-trees_181624-24215.jpg?semt=ais_hybrid&w=740")'; // Весна
-  } else if (month >= 6 && month <= 8) {
-    imageUrl = 'url("https://cs5.pikabu.ru/post_img/big/2015/03/22/6/1427016935_438550143.jpg")'; // Лето
-  } else if (month >= 9 && month <= 11) {
-    imageUrl = 'url("https://online.vsu.by/wp-content/uploads/2021/11/%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%BE%D1%81%D0%B5%D0%BD%D0%B8.jpg")'; // Осень
-  } else {
-    imageUrl = 'url("https://emosurff.com/i/00019J0r3n0a/1386792659_zimnie-peyzazhi-5.jpg")'; // Зима
-  }
-
-  document.body.style.backgroundImage = imageUrl;
-}
-
-setSeasonBackground(); // Вызываем при загрузке страницы
-setInterval(setSeasonBackground, 60000);
-</script>
-
-<br>
 </body>
 </html>

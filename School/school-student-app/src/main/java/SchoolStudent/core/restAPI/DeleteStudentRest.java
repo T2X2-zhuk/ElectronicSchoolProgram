@@ -1,7 +1,7 @@
 package SchoolStudent.core.restAPI;
 
-import SchoolStudent.core.request.DeleteStudentFromDatabaseRequest;
-import SchoolStudent.core.response.DeleteStudentFromDatabaseResponse;
+import SchoolStudent.core.request.student.DeleteStudentFromDatabaseRequest;
+import SchoolStudent.core.response.student.DeleteStudentFromDatabaseResponse;
 import SchoolStudent.core.service.DeleteStudentFromDatabaseService;
 import com.google.common.base.Stopwatch;
 import org.springframework.beans.factory.annotation.Autowired;

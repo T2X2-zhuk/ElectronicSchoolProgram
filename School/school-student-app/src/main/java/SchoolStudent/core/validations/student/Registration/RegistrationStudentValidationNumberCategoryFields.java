@@ -1,7 +1,7 @@
 package SchoolStudent.core.validations.student.Registration;
 
 import SchoolStudent.core.dto.ValidationErrorDTO;
-import SchoolStudent.core.request.RegistrationStudentInDatabaseRequest;
+import SchoolStudent.core.request.student.RegistrationStudentInDatabaseRequest;
 import SchoolStudent.core.validations.MethodsValidatorClasses.ValidatorClassWithMethodsForParametersNumberAndCategorySpecialCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

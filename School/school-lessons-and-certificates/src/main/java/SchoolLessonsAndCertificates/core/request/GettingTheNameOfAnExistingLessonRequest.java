@@ -1,4 +1,4 @@
-package SchoolStudent.core.dto;
+package SchoolLessonsAndCertificates.core.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,13 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentDTO {
-
-    private String first_name;
-
-    private String last_name;
-
-    private String fatherland;
-
-
+public class GettingTheNameOfAnExistingLessonRequest {
+    private String lessonName;
 }

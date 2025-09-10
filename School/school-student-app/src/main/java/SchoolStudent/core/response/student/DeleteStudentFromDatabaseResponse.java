@@ -1,4 +1,4 @@
-package SchoolStudent.core.SchoolLessonsAndCertificates.dto;
+package SchoolStudent.core.response.student;
 
 import SchoolStudent.core.dto.CoreResponse;
 import SchoolStudent.core.dto.ValidationErrorDTO;
@@ -15,12 +15,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SaveStudentResponse extends CoreResponse {
+public class DeleteStudentFromDatabaseResponse extends CoreResponse {
 
-    private Boolean successfulOrUnsuccessfulRegister;
+    private String message;
 
-    public SaveStudentResponse(List<ValidationErrorDTO> errors) {
+    public DeleteStudentFromDatabaseResponse(List<ValidationErrorDTO> errors) {
         super(errors);
     }
-
 }

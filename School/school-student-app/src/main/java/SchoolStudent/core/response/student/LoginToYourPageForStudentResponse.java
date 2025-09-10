@@ -1,4 +1,4 @@
-package SchoolStudent.core.response;
+package SchoolStudent.core.response.student;
 
 import SchoolStudent.core.domain.SchoolStudent;
 import SchoolStudent.core.dto.CoreResponse;

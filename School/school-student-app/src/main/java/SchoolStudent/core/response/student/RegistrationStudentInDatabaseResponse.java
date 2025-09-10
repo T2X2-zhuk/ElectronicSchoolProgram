@@ -1,4 +1,4 @@
-package SchoolStudent.core.response;
+package SchoolStudent.core.response.student;
 
 import SchoolStudent.core.dto.CoreResponse;
 import SchoolStudent.core.dto.ValidationErrorDTO;
@@ -9,17 +9,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class TransferOfStudentToANewClassResponse extends CoreResponse {
+public class RegistrationStudentInDatabaseResponse extends CoreResponse {
 
-   private String message;
+    private String message;
 
-    public TransferOfStudentToANewClassResponse(List<ValidationErrorDTO> errors) {
+    public RegistrationStudentInDatabaseResponse(List<ValidationErrorDTO> errors) {
         super(errors);
     }
 }

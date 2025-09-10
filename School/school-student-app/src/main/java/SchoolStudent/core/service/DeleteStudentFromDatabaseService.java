@@ -2,14 +2,13 @@ package SchoolStudent.core.service;
 
 
 import SchoolStudent.core.database.SchoolStudentRepository;
-import SchoolStudent.core.request.DeleteStudentFromDatabaseRequest;
-import SchoolStudent.core.response.DeleteStudentFromDatabaseResponse;
+import SchoolStudent.core.request.student.DeleteStudentFromDatabaseRequest;
+import SchoolStudent.core.response.student.DeleteStudentFromDatabaseResponse;
 import SchoolStudent.core.validations.student.DeleteStudentValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;

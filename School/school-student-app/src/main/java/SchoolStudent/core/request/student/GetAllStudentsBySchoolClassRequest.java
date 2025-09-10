@@ -1,6 +1,5 @@
-package SchoolStudent.core.request;
+package SchoolStudent.core.request.student;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,9 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TransferOfStudentToANewClassRequest {
+public class GetAllStudentsBySchoolClassRequest {
 
-    private String email;
+    private Long number;
     private String category;
-    private Long newClassNumber;
 }

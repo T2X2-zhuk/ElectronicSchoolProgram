@@ -1,24 +1,24 @@
-package SchoolStudent.core.response;
+package SchoolStudent.core.response.student;
 
+import SchoolStudent.core.domain.SchoolStudent;
 import SchoolStudent.core.dto.CoreResponse;
 import SchoolStudent.core.dto.ValidationErrorDTO;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RegistrationStudentInDatabaseResponse extends CoreResponse {
+public class GetAllStudentsBySchoolClassResponse extends CoreResponse {
 
-    private String message;
+    private List<SchoolStudent> schoolStudentList;
 
-    public RegistrationStudentInDatabaseResponse(List<ValidationErrorDTO> errors) {
+    public GetAllStudentsBySchoolClassResponse(List<ValidationErrorDTO> errors) {
         super(errors);
     }
 }

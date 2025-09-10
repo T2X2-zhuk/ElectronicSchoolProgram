@@ -1,12 +1,8 @@
 package SchoolStudent.core.web;
 
-import SchoolStudent.core.request.DeleteStudentFromDatabaseRequest;
-import SchoolStudent.core.request.RegistrationStudentInDatabaseRequest;
-import SchoolStudent.core.response.DeleteStudentFromDatabaseResponse;
-import SchoolStudent.core.response.RegistrationStudentInDatabaseResponse;
-import SchoolStudent.core.restAPI.RestRequestExecutionTimeLogger;
+import SchoolStudent.core.request.student.DeleteStudentFromDatabaseRequest;
+import SchoolStudent.core.response.student.DeleteStudentFromDatabaseResponse;
 import SchoolStudent.core.service.DeleteStudentFromDatabaseService;
-import com.google.common.base.Stopwatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -1,7 +1,7 @@
 package SchoolStudent.core.restAPI;
 
-import SchoolStudent.core.request.RegistrationStudentInDatabaseRequest;
-import SchoolStudent.core.response.RegistrationStudentInDatabaseResponse;
+import SchoolStudent.core.request.student.RegistrationStudentInDatabaseRequest;
+import SchoolStudent.core.response.student.RegistrationStudentInDatabaseResponse;
 import SchoolStudent.core.service.RegistrationStudentInDatabaseService;
 import com.google.common.base.Stopwatch;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/school/student/api")
-public class SaveStudentRestRequest {
+public class SaveStudentRest {
 
     @Autowired private RegistrationStudentInDatabaseService service;
     @Autowired private RestRequestExecutionTimeLogger restRequestExecutionTimeLogger;

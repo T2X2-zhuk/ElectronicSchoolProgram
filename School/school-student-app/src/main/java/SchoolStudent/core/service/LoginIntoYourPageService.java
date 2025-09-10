@@ -2,8 +2,8 @@ package SchoolStudent.core.service;
 
 import SchoolStudent.core.database.SchoolStudentRepository;
 import SchoolStudent.core.domain.SchoolStudent;
-import SchoolStudent.core.request.LoginToYourStudentPageRequest;
-import SchoolStudent.core.response.LoginToYourPageForStudentResponse;
+import SchoolStudent.core.request.student.LoginToYourStudentPageRequest;
+import SchoolStudent.core.response.student.LoginToYourPageForStudentResponse;
 import SchoolStudent.core.validations.student.LoginIntoStudentPageValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

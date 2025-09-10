@@ -9,9 +9,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SaveStudentRequest {
+public class SaveStudentRequestForSchoolLessonsAndCertificatesMicroservice {
 
     private String firstName;
     private String lastName;
     private String fatherland;
+    private String email;
+    private Long numberClass;
+    private String category;
+
 }

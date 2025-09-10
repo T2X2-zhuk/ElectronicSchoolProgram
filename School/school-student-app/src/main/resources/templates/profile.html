@@ -1,78 +1,142 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Profile</title>
     <style>
-body {
-  background-size: cover;
-  transition: background-image 1s ease-in-out;
-   background-repeat: no-repeat;
-    background-position: center center; /* Центрируем изображение */
-  height: 100vh; /* Задаем высоту страницы 100% */
-  margin: 0; /* Убираем отступы */
+   html, body {
+    min-height: 100%; /* вместо height: 100% */
+    margin: 0;
+    padding: 20px 0;
 }
 
- #time-container {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    color: black;
-    background-color: green;
-    padding: 5px;
-    border: 1px solid black;
-  }
+body {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: white;
+}
 
-</style>
-    <style>
-    .white-background-label {
-        background-color: white;
+.overlay {
+    background: rgba(0,0,0,0.65);
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    margin: 20px auto; /* вертикальный отступ для прокрутки */
+}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-</style>
+    h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #f0dbff;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background: linear-gradient(135deg, #4caf50, #81c784);
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    a:hover {
+      background: linear-gradient(135deg, #43a047, #66bb6a);
+      transform: scale(1.05);
+    }
+    .white-background-label {
+      background-color: white;
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 10px;
+      color: black;
+    }
+    #time-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      background-color: rgba(0, 128, 0, 0.75);
+      padding: 10px 18px;
+      border-radius: 15px;
+      border: 2px solid #fff;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+      text-align: center;
+      text-shadow: 0 0 8px lime, 0 0 16px lime;
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
-<h2>Добро пожаловать, <span th:text="${schoolStudent.first_name}">[Имя]</span>,
-    <span th:text="${schoolStudent.last_name}">[Имя]</span>,<span th:text="${schoolStudent.fatherland}">[Имя]</span>!</h2>
 
-<a  class="white-background-label" th:href="@{|get-all-students-by-school-class?number=${schoolStudent.classes_id.number}&category=${schoolStudent.classes_id.category}|}" target="_blank">Go to see the students>
-    Show all students by your school class
-</a>
+<div class="overlay">
+    <h2>Добро пожаловать,<br>
+        <span th:text="${schoolStudent.first_name}">[Имя]</span>
+        <span th:text="${schoolStudent.last_name}">[Фамилия]</span>
+        <span th:text="${schoolStudent.fatherland}">[Отчество]</span>!
+    </h2>
+
+    <a class="white-background-label"
+       th:href="@{|get-all-students-by-school-class?number=${schoolStudent.classes_id.number}&category=${schoolStudent.classes_id.category}|}"
+       target="_blank">
+        Посмотреть всех учеников вашего класса
+    </a>
+</div>
 
 <div id="time-container"></div>
 
 <script>
+  // Фон по месяцам
+  const monthBackgrounds = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzTTR0vgtAnIZ6ZigHL3dgDkHrzhRrW28wAw&s",
+    "https://sotni.ru/wp-content/uploads/2023/08/shkolnyi-fon-352.webp",
+    "https://kartinki.pics/uploads/posts/2021-04/1617590212_50-p-fon-dlya-prezentatsii-nachalnaya-shkola-52.jpg",
+    "https://img.freepik.com/free-photo/flat-lay-composition-flowers-with-copyspace_23-2148134876.jpg",
+    "https://ulus.media/wp-content/uploads/2024/05/whatsapp-image-2024-05-01-at-10.38.26.jpeg",
+    "https://lh6.googleusercontent.com/proxy/jgXRFfgDgeH3qNcGP1sO9SkMbqfnGhXYDpKfEw8VrQM9NEVenEcfmPpHmR1jRq6rswK74cQp4__y7UIu9IoHOHetKSK47i0PsdHOvoQ",
+    "https://www.zastavki.com/pictures/600x382/2014Nature___Flowers_Flowers_sky_glade_076309_33.jpg",
+    "https://img.freepik.com/free-vector/watercolor-background-thanksgiving-celebration_52683-140730.jpg",
+    "https://propowerpoint.ru/fony/pervoe-sentyabrya/1.jpg",
+    "https://r1.nubex.ru/s14825-ea3/f1377_69/%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C-%D0%BE%D1%81%D0%B5%D0%BD%D1%8C1.jpg",
+    "https://gas-kvas.com/grafic/uploads/posts/2024-01/gas-kvas-com-p-oktyabr-nadpis-krasivaya-na-prozrachnom-fo-44.jpg",
+    "https://kartinki.pics/pics/uploads/posts/2022-08/1660793265_1-kartinkin-net-p-krasivii-fon-dekabr-krasivo-2.jpg"
+  ];
+
+  function setMonthBackground() {
+    const now = new Date();
+    const monthIndex = now.getMonth(); // 0–11
+    document.body.style.backgroundImage = `url("${monthBackgrounds[monthIndex]}")`;
+  }
+
+  setMonthBackground();
+  setInterval(setMonthBackground, 60000);
+
+  // Время + дата
   function updateTime() {
     const now = new Date();
-    const timeString = now.toLocaleTimeString();
-    document.getElementById("time-container").textContent = timeString;
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateStr = now.toLocaleDateString('ru-RU', options);
+    const timeStr = now.toLocaleTimeString('ru-RU');
+    document.getElementById("time-container").textContent = `${timeStr} — ${dateStr}`;
   }
-
   setInterval(updateTime, 1000);
   updateTime();
-</script>
-
-<script>
-function setSeasonBackground() {
-  const now = new Date();
-  const month = now.getMonth(); // 0-11
-  let imageUrl;
-
-  if (month >= 3 && month <= 5) {
-    imageUrl = 'url("https://img.freepik.com/free-photo/beautiful-shot-green-field-covered-with-yellow-flowers-near-cherry-blossom-trees_181624-24215.jpg?semt=ais_hybrid&w=740")'; // Весна
-  } else if (month >= 6 && month <= 8) {
-    imageUrl = 'url("https://cs5.pikabu.ru/post_img/big/2015/03/22/6/1427016935_438550143.jpg")'; // Лето
-  } else if (month >= 9 && month <= 11) {
-    imageUrl = 'url("https://online.vsu.by/wp-content/uploads/2021/11/%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%BE%D1%81%D0%B5%D0%BD%D0%B8.jpg")'; // Осень
-  } else {
-    imageUrl = 'url("https://emosurff.com/i/00019J0r3n0a/1386792659_zimnie-peyzazhi-5.jpg")'; // Зима
-  }
-
-  document.body.style.backgroundImage = imageUrl;
-}
-
-setSeasonBackground(); // Вызываем при загрузке страницы
-setInterval(setSeasonBackground, 60000);
 </script>
 </body>
 </html>

@@ -1,9 +1,8 @@
 package SchoolStudent.core.validations.student.Get;
 
 import SchoolStudent.core.dto.ValidationErrorDTO;
-import SchoolStudent.core.request.GetAllStudentsBySchoolClassRequest;
+import SchoolStudent.core.request.student.GetAllStudentsBySchoolClassRequest;
 import SchoolStudent.core.validations.MethodsValidatorClasses.ValidatorClassWithMethodsForParametersNumberAndCategorySpecialCode;
-import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
 package SchoolStudent.core.validations.student;
 
 import SchoolStudent.core.dto.ValidationErrorDTO;
-import SchoolStudent.core.request.GetAllStudentsBySchoolClassRequest;
+import SchoolStudent.core.request.student.GetAllStudentsBySchoolClassRequest;
 import SchoolStudent.core.validations.student.Get.GetStudentsValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

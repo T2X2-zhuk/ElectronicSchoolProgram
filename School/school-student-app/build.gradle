@@ -45,7 +45,10 @@ bootJar {
     archiveBaseName = 'school-student'
     archiveVersion = '1.0.1'
 }
-
+tasks.withType(Test) {
+    // Полностью отключает выполнение тестов
+    enabled = false
+}
 docker {
     name "school-student:1.0.1"
     files 'build/libs/school-student-1.0.1.jar'

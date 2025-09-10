@@ -27,4 +27,13 @@ public class Student {
 
     @Column(name = "fatherland",nullable = false)
     private String fatherland;
+
+    @Column(name = "email" , nullable = false)
+    private String email;
+
+    @Column(name = "number" , nullable = false)
+    private Long number;
+
+    @Column(name = "category",nullable = false)
+    private String category;
 }

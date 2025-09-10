@@ -1,7 +1,7 @@
 package SchoolStudent.core.validations.student;
 
 import SchoolStudent.core.dto.ValidationErrorDTO;
-import SchoolStudent.core.request.DeleteStudentFromDatabaseRequest;
+import SchoolStudent.core.request.student.DeleteStudentFromDatabaseRequest;
 import SchoolStudent.core.validations.MethodsValidatorClasses.ValidatorClassWithMethodsForParametersEmailAndPassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

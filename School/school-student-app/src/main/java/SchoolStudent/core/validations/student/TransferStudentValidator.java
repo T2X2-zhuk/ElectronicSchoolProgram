@@ -1,7 +1,7 @@
 package SchoolStudent.core.validations.student;
 
 import SchoolStudent.core.dto.ValidationErrorDTO;
-import SchoolStudent.core.request.TransferOfStudentToANewClassRequest;
+import SchoolStudent.core.request.student.TransferOfStudentToANewClassRequest;
 import SchoolStudent.core.validations.student.Transfer.TransferStudentValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

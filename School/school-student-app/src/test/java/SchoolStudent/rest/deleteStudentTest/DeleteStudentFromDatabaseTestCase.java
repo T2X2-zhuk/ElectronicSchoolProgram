@@ -1,13 +1,12 @@
 package SchoolStudent.rest.deleteStudentTest;
 
 
-import SchoolStudent.core.SchoolLessonsAndCertificates.SchoolLessonsAndCertificatesMicroservice;
-import SchoolStudent.core.dto.StudentDTO;
+import SchoolStudent.core.restAPI.DeleteStudentRest;
 import SchoolStudent.rest.common.JsonFileReader;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -24,7 +23,6 @@ import static uk.org.webcompere.modelassert.json.JsonAssertions.assertJson;
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 abstract class DeleteStudentFromDatabaseTestCase {
 
     @Autowired private MockMvc mockMvc;

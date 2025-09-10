@@ -1,4 +1,4 @@
-package SchoolLessonsAndCertificates.rest.saveStudent;
+package SchoolLessonsAndCertificates.rest.saveStudentTestPackage;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

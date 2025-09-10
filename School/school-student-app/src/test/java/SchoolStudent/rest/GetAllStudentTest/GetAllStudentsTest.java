@@ -1,7 +1,6 @@
 package SchoolStudent.rest.GetAllStudentTest;
 
 import SchoolStudent.core.SchoolLessonsAndCertificates.SchoolLessonsAndCertificatesMicroservice;
-import SchoolStudent.core.dto.StudentDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,11 +16,6 @@ public class GetAllStudentsTest extends GetAllStudentsTestCase {
    @MockBean
    protected SchoolLessonsAndCertificatesMicroservice schoolLessonsAndCertificatesMicroservice;
 
-   @BeforeEach
-   void setUp() {
-      when(schoolLessonsAndCertificatesMicroservice.execute(any(StudentDTO.class)))
-              .thenReturn(true);
-   }
    @Test
    @DisplayName("errorCodeAllIsEmpty")
    public void check_ERROR_CODE_1() throws Exception {

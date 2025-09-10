@@ -1,9 +1,7 @@
 package SchoolStudent.core.restAPI;
 
-import SchoolStudent.core.request.GetAllStudentsBySchoolClassRequest;
-import SchoolStudent.core.request.TransferOfStudentToANewClassRequest;
-import SchoolStudent.core.response.GetAllStudentsBySchoolClassResponse;
-import SchoolStudent.core.response.TransferOfStudentToANewClassResponse;
+import SchoolStudent.core.request.student.GetAllStudentsBySchoolClassRequest;
+import SchoolStudent.core.response.student.GetAllStudentsBySchoolClassResponse;
 import SchoolStudent.core.service.GetAllStudentsBySchoolClassService;
 import com.google.common.base.Stopwatch;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/school/student/api")
-public class GetAllStudentsBySchoolClass {
+public class GetAllStudentsBySchoolClassRest {
 
     @Autowired private GetAllStudentsBySchoolClassService service;
     @Autowired private RestRequestExecutionTimeLogger restRequestExecutionTimeLogger;

@@ -1,9 +1,9 @@
-package SchoolStudent.core.response;
+package SchoolStudent.core.response.student;
 
-import SchoolStudent.core.domain.SchoolStudent;
 import SchoolStudent.core.dto.CoreResponse;
 import SchoolStudent.core.dto.ValidationErrorDTO;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,13 +12,14 @@ import java.util.List;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetAllStudentsBySchoolClassResponse extends CoreResponse {
+public class TransferOfStudentToANewClassResponse extends CoreResponse {
 
-    private List<SchoolStudent> schoolStudentList;
+   private String message;
 
-    public GetAllStudentsBySchoolClassResponse(List<ValidationErrorDTO> errors) {
+    public TransferOfStudentToANewClassResponse(List<ValidationErrorDTO> errors) {
         super(errors);
     }
 }

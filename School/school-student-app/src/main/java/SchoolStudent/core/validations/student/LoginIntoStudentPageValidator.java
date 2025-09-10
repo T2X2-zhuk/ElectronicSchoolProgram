@@ -1,7 +1,7 @@
 package SchoolStudent.core.validations.student;
 
 import SchoolStudent.core.dto.ValidationErrorDTO;
-import SchoolStudent.core.request.LoginToYourStudentPageRequest;
+import SchoolStudent.core.request.student.LoginToYourStudentPageRequest;
 import SchoolStudent.core.validations.MethodsValidatorClasses.ValidatorClassWithMethodsForParametersEmailAndPassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

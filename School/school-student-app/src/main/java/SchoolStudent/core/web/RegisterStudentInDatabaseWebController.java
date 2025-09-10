@@ -1,7 +1,7 @@
 package SchoolStudent.core.web;
 
-import SchoolStudent.core.request.RegistrationStudentInDatabaseRequest;
-import SchoolStudent.core.response.RegistrationStudentInDatabaseResponse;
+import SchoolStudent.core.request.student.RegistrationStudentInDatabaseRequest;
+import SchoolStudent.core.response.student.RegistrationStudentInDatabaseResponse;
 import SchoolStudent.core.service.RegistrationStudentInDatabaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package SchoolLessonsAndCertificates.rest.saveStudent;
+package SchoolLessonsAndCertificates.rest.saveStudentTestPackage;
 
 
 import SchoolLessonsAndCertificates.rest.common.JsonFileReader;
@@ -21,8 +21,7 @@ import static uk.org.webcompere.modelassert.json.JsonAssertions.assertJson;
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
- abstract class SaveStudentTestCase {
+abstract class SaveStudentTestCase {
 
     @Autowired private MockMvc mockMvc;
 

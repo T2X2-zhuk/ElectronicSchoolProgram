@@ -2,7 +2,6 @@ package SchoolLessonsAndCertificates.core.services;
 
 import SchoolLessonsAndCertificates.core.database.StudentRepository;
 import SchoolLessonsAndCertificates.core.domain.Student;
-import SchoolLessonsAndCertificates.core.dto.ValidationErrorDTO;
 import SchoolLessonsAndCertificates.core.request.SaveStudentRequest;
 import SchoolLessonsAndCertificates.core.response.SaveStudentResponse;
 import SchoolLessonsAndCertificates.core.validators.SaveStudentInDatabaseValidator;
@@ -10,11 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 @Transactional
-public class SaveStudentService {
+public class SaveStudentService{
 
 
     @Autowired
@@ -22,30 +19,29 @@ public class SaveStudentService {
     @Autowired private SaveStudentInDatabaseValidator validator;
 
     public SaveStudentResponse execute(SaveStudentRequest request){
-        if (isErrorsOrNot(request).hasErrors()){
-            return isErrorsOrNot(request);
-        }else {
-            successful(request);
-            SaveStudentResponse response = new SaveStudentResponse();
-            response.setSuccessfulOrUnsuccessfulRegister(true);
-            return response;
+        SaveStudentResponse result = validateRequestAndReturnResult(request);
+        if (!result.hasErrors()) {
+            repository.save(buildStudentForSaveHis(request));
         }
+        return result;
     }
-
-    private void successful(SaveStudentRequest request){
+    private SaveStudentResponse validateRequestAndReturnResult(SaveStudentRequest request){
+        SaveStudentResponse response = new SaveStudentResponse();
+        if (!validator.validate(request).isEmpty()){
+            response.setErrors(validator.validate(request));
+        }else {
+            response.setSuccessfulMessage("You successfully registered in the database");
+        }
+        return response;
+    }
+    private Student buildStudentForSaveHis(SaveStudentRequest request){
         Student student = new Student();
         student.setFirst_name(request.getFirstName());
         student.setLast_name(request.getLastName());
         student.setFatherland(request.getFatherland());
-        repository.save(student);
-    }
-    private SaveStudentResponse isErrorsOrNot(SaveStudentRequest request){
-        SaveStudentResponse response = new SaveStudentResponse();
-        List<ValidationErrorDTO> validationErrorDTOS = validator.validate(request);
-        if (!validationErrorDTOS.isEmpty()){
-            response.setSuccessfulOrUnsuccessfulRegister(false);
-            response.setErrors(validationErrorDTOS);
-        }
-        return response;
+        student.setEmail(request.getEmail());
+        student.setNumber(request.getNumberClass());
+        student.setCategory(request.getCategory());
+        return student;
     }
 }

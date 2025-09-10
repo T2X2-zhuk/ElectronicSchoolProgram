@@ -1,7 +1,8 @@
 package SchoolStudent.rest.saveStudentTest;
 
 import SchoolStudent.core.SchoolLessonsAndCertificates.SchoolLessonsAndCertificatesMicroservice;
-import SchoolStudent.core.dto.StudentDTO;
+import SchoolStudent.core.SchoolLessonsAndCertificates.dto.SaveStudentRequestForSchoolLessonsAndCertificatesMicroservice;
+import SchoolStudent.core.SchoolLessonsAndCertificates.dto.SaveStudentResponseForSchoolLessonsAndCertificatesMicroservice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,12 +17,13 @@ public class SaveStudentInDatabaseTest extends SaveStudentInDatabaseTestCase {
     private static final String TEST_FILE_BASE_FOLDER = "studentFile/forSaveStudent";
     @MockBean
     protected SchoolLessonsAndCertificatesMicroservice schoolLessonsAndCertificatesMicroservice;
-
-    @BeforeEach
-    void setUp() {
-        when(schoolLessonsAndCertificatesMicroservice.execute(any(StudentDTO.class)))
-                .thenReturn(true);
+    @Test
+    @DisplayName("check_Successful")
+    public void check_Successful() throws Exception {
+        mockSuccessfulRegistration();
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/17_check_Successful");
     }
+
     @Test
     @DisplayName("ERROR_CODE_1_first_name_must_not_be_null")
     public void check_ERROR_CODE_1() throws Exception {
@@ -118,9 +120,14 @@ public class SaveStudentInDatabaseTest extends SaveStudentInDatabaseTestCase {
         executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_16_the_wrong_specific_code");
     }
 
-    @Test
-    @DisplayName("check_Successful")
-    public void check_Successful() throws Exception {
-        executeAndCompare(TEST_FILE_BASE_FOLDER + "/17_check_Successful");
+
+    private void mockSuccessfulRegistration() {
+        SaveStudentResponseForSchoolLessonsAndCertificatesMicroservice mockResponse =
+                new SaveStudentResponseForSchoolLessonsAndCertificatesMicroservice();
+        mockResponse.setSuccessfulMessage("You successfully registered in the database");
+
+        when(schoolLessonsAndCertificatesMicroservice
+                .execute(any(SaveStudentRequestForSchoolLessonsAndCertificatesMicroservice.class)))
+                .thenReturn(mockResponse);
     }
 }

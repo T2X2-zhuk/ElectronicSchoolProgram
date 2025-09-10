@@ -1,10 +1,11 @@
 package SchoolStudent.core.SchoolLessonsAndCertificates;
 
 
-import SchoolStudent.core.dto.StudentDTO;
+import SchoolStudent.core.SchoolLessonsAndCertificates.dto.SaveStudentRequestForSchoolLessonsAndCertificatesMicroservice;
+import SchoolStudent.core.SchoolLessonsAndCertificates.dto.SaveStudentResponseForSchoolLessonsAndCertificatesMicroservice;
 
 public interface SchoolLessonsAndCertificatesMicroservice {
 
-    Boolean execute(StudentDTO studentDTO);
+    SaveStudentResponseForSchoolLessonsAndCertificatesMicroservice execute(SaveStudentRequestForSchoolLessonsAndCertificatesMicroservice request);
 
 }

@@ -1,6 +1,6 @@
 package SchoolStudent.core.restAPI;
-import SchoolStudent.core.request.TransferOfStudentToANewClassRequest;
-import SchoolStudent.core.response.TransferOfStudentToANewClassResponse;
+import SchoolStudent.core.request.student.TransferOfStudentToANewClassRequest;
+import SchoolStudent.core.response.student.TransferOfStudentToANewClassResponse;
 import SchoolStudent.core.service.TransferOfStudentToANewClassService;
 import com.google.common.base.Stopwatch;
 import org.springframework.beans.factory.annotation.Autowired;

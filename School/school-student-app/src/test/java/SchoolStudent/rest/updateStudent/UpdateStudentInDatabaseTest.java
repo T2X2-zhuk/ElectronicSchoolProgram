@@ -1,13 +1,15 @@
 package SchoolStudent.rest.updateStudent;
 
 import SchoolStudent.core.SchoolLessonsAndCertificates.SchoolLessonsAndCertificatesMicroservice;
-import SchoolStudent.core.dto.StudentDTO;
+import SchoolStudent.core.SchoolLessonsAndCertificates.dto.SaveStudentRequestForSchoolLessonsAndCertificatesMicroservice;
+import SchoolStudent.core.SchoolLessonsAndCertificates.dto.SaveStudentResponseForSchoolLessonsAndCertificatesMicroservice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 
@@ -16,12 +18,6 @@ class UpdateStudentInDatabaseTest extends UpdateStudentInDatabaseTestCase {
     private static final String TEST_FILE_BASE_FOLDER = "studentFile/forUpdateStudent";
     @MockBean
     protected SchoolLessonsAndCertificatesMicroservice schoolLessonsAndCertificatesMicroservice;
-
-    @BeforeEach
-    void setUp() {
-        when(schoolLessonsAndCertificatesMicroservice.execute(any(StudentDTO.class)))
-                .thenReturn(true);
-    }
     @Test
     @DisplayName("rest/studentFile/forUpdateStudent/ERROR_CODE_1_all_is_empty")
     public void check_ERROR_CODE_1() throws Exception {

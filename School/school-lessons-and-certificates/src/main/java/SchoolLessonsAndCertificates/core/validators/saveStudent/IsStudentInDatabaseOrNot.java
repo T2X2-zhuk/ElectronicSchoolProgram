@@ -16,9 +16,7 @@ public class IsStudentInDatabaseOrNot implements SaveStudentValidation {
     @Override
     public List<ValidationErrorDTO> validationErrorDTOSList(SaveStudentRequest request) {
         List<ValidationErrorDTO> errorDTOS = new ArrayList<>();
-        validatorClassWithMethods.isStudentInDatabaseError(request.getFirstName(),request.getLastName(),request.getFatherland()).ifPresent(errorDTOS::add);
+        validatorClassWithMethods.isStudentInDatabaseError(request.getFirstName(),request.getLastName(),request.getFatherland(),request.getEmail()).ifPresent(errorDTOS::add);
         return errorDTOS;
     }
-
-
 }

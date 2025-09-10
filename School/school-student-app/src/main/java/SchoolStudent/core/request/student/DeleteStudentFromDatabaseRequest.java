@@ -1,4 +1,4 @@
-package SchoolStudent.core.request;
+package SchoolStudent.core.request.student;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

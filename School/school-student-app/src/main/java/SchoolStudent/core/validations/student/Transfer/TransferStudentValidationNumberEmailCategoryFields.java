@@ -1,7 +1,7 @@
 package SchoolStudent.core.validations.student.Transfer;
 
 import SchoolStudent.core.dto.ValidationErrorDTO;
-import SchoolStudent.core.request.TransferOfStudentToANewClassRequest;
+import SchoolStudent.core.request.student.TransferOfStudentToANewClassRequest;
 import SchoolStudent.core.validations.MethodsValidatorClasses.ValidatorClassWithMethodsForParametersEmailAndPassword;
 import SchoolStudent.core.validations.MethodsValidatorClasses.ValidatorClassWithMethodsForParametersNumberAndCategorySpecialCode;
 import org.springframework.beans.factory.annotation.Autowired;
