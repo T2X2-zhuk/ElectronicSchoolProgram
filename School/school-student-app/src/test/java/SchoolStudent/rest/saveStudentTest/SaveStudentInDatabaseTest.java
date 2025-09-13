@@ -1,9 +1,11 @@
 package SchoolStudent.rest.saveStudentTest;
 
-import SchoolStudent.core.SchoolLessonsAndCertificates.SchoolLessonsAndCertificatesMicroservice;
-import SchoolStudent.core.SchoolLessonsAndCertificates.dto.SaveStudentRequestForSchoolLessonsAndCertificatesMicroservice;
-import SchoolStudent.core.SchoolLessonsAndCertificates.dto.SaveStudentResponseForSchoolLessonsAndCertificatesMicroservice;
-import org.junit.jupiter.api.BeforeEach;
+import SchoolStudent.core.SchoolLessonsAndCertificates.interficesForServices.SchoolLessonsAndCertificatesMicroserviceForDeleteStudents;
+import SchoolStudent.core.SchoolLessonsAndCertificates.interficesForServices.SchoolLessonsAndCertificatesMicroserviceForGetSubjectNameService;
+import SchoolStudent.core.SchoolLessonsAndCertificates.interficesForServices.SchoolLessonsAndCertificatesMicroserviceForSaveStudent;
+import SchoolStudent.core.SchoolLessonsAndCertificates.dto.request.SaveStudentForSchoolLessonsAndCertificatesMicroserviceRequest;
+import SchoolStudent.core.SchoolLessonsAndCertificates.dto.response.SaveStudentForSchoolLessonsAndCertificatesMicroserviceResponse;
+import SchoolStudent.core.SchoolLessonsAndCertificates.interficesForServices.SchoolLessonsAndCertificatesMicroserviceForTransferStudent;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -16,7 +18,13 @@ public class SaveStudentInDatabaseTest extends SaveStudentInDatabaseTestCase {
 
     private static final String TEST_FILE_BASE_FOLDER = "studentFile/forSaveStudent";
     @MockBean
-    protected SchoolLessonsAndCertificatesMicroservice schoolLessonsAndCertificatesMicroservice;
+    protected SchoolLessonsAndCertificatesMicroserviceForSaveStudent schoolLessonsAndCertificatesMicroserviceForSaveStudent;
+    @MockBean
+    protected SchoolLessonsAndCertificatesMicroserviceForTransferStudent transferStudent;
+    @MockBean
+    protected SchoolLessonsAndCertificatesMicroserviceForGetSubjectNameService getSubjectNameService;
+    @MockBean
+    protected SchoolLessonsAndCertificatesMicroserviceForDeleteStudents deleteStudents;
     @Test
     @DisplayName("check_Successful")
     public void check_Successful() throws Exception {
@@ -122,12 +130,12 @@ public class SaveStudentInDatabaseTest extends SaveStudentInDatabaseTestCase {
 
 
     private void mockSuccessfulRegistration() {
-        SaveStudentResponseForSchoolLessonsAndCertificatesMicroservice mockResponse =
-                new SaveStudentResponseForSchoolLessonsAndCertificatesMicroservice();
+        SaveStudentForSchoolLessonsAndCertificatesMicroserviceResponse mockResponse =
+                new SaveStudentForSchoolLessonsAndCertificatesMicroserviceResponse();
         mockResponse.setSuccessfulMessage("You successfully registered in the database");
 
-        when(schoolLessonsAndCertificatesMicroservice
-                .execute(any(SaveStudentRequestForSchoolLessonsAndCertificatesMicroservice.class)))
+        when(schoolLessonsAndCertificatesMicroserviceForSaveStudent
+                .execute(any(SaveStudentForSchoolLessonsAndCertificatesMicroserviceRequest.class)))
                 .thenReturn(mockResponse);
     }
 }

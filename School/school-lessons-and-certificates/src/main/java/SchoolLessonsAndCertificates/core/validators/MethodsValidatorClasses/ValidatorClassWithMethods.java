@@ -19,15 +19,9 @@ import java.util.Optional;
     @Autowired private StudentRepository studentRepository;
     @Autowired private LessonRepository lessonRepository;
 
-    public Optional<ValidationErrorDTO> isStudentInDatabaseError(String firstName, String lastName, String fatherland,String  email){
-        return (studentRepository.findByFirstNameLastNameFatherlandEmail(firstName,lastName,fatherland,email).isPresent())
-                ? Optional.of(errorFactory.buildError("ERROR_CODE_1"))
-                : Optional.empty();
-    }
-
     public  Optional<ValidationErrorDTO> isLessonInDatabaseError(String subjectName){
         return (lessonRepository.findByName(subjectName)).isEmpty()
-                ? Optional.of(errorFactory.buildError("ERROR_CODE_2"))
+                ? Optional.of(errorFactory.buildError("ERROR_CODE_1"))
                 : Optional.empty();
     }
     private boolean isNullOrBlankOrEmpty(String parameter) {

@@ -12,6 +12,7 @@ import java.util.List;
 @Component
 public class IsLessonInDatabaseOfAnExistingLesson implements GettingTheNameOfAnExistingLessonValidation {
     @Autowired private ValidatorClassWithMethods methods;
+
     @Override
     public List<ValidationErrorDTO> validationErrorDTOSList(GettingTheNameOfAnExistingLessonRequest request) {
         List<ValidationErrorDTO>  errorDTOS = new ArrayList<>();

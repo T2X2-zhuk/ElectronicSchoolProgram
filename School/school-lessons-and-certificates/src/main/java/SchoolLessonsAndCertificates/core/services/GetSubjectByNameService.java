@@ -31,7 +31,10 @@ public class GetSubjectByNameService {
             response.setErrors(validator.validate(request));
         }else {
             Optional<Lesson> lesson = repository.findByName(request.getLessonName());
-            response.setLessonName(lesson.get().getName());
+            response.setLessonName(
+                    lesson.map(Lesson::getName)
+                            .orElse("Урок не найден")
+            );
         }
         return response;
     }

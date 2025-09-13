@@ -1,21 +1,27 @@
 package SchoolStudent.rest.GetAllStudentTest;
 
-import SchoolStudent.core.SchoolLessonsAndCertificates.SchoolLessonsAndCertificatesMicroservice;
-import org.junit.jupiter.api.BeforeEach;
+import SchoolStudent.core.SchoolLessonsAndCertificates.interficesForServices.SchoolLessonsAndCertificatesMicroserviceForDeleteStudents;
+import SchoolStudent.core.SchoolLessonsAndCertificates.interficesForServices.SchoolLessonsAndCertificatesMicroserviceForGetSubjectNameService;
+import SchoolStudent.core.SchoolLessonsAndCertificates.interficesForServices.SchoolLessonsAndCertificatesMicroserviceForSaveStudent;
+import SchoolStudent.core.SchoolLessonsAndCertificates.interficesForServices.SchoolLessonsAndCertificatesMicroserviceForTransferStudent;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 
 public class GetAllStudentsTest extends GetAllStudentsTestCase {
 
    private static final String TEST_FILE_BASE_FOLDER = "studentFile/forGetStudents";
    @MockBean
-   protected SchoolLessonsAndCertificatesMicroservice schoolLessonsAndCertificatesMicroservice;
-
+   protected SchoolLessonsAndCertificatesMicroserviceForSaveStudent schoolLessonsAndCertificatesMicroserviceForSaveStudent;
+   @MockBean
+   protected SchoolLessonsAndCertificatesMicroserviceForTransferStudent transferStudent;
+   @MockBean
+   protected SchoolLessonsAndCertificatesMicroserviceForGetSubjectNameService getSubjectNameService;
+   @MockBean
+   protected SchoolLessonsAndCertificatesMicroserviceForDeleteStudents deleteStudents;
    @Test
    @DisplayName("errorCodeAllIsEmpty")
    public void check_ERROR_CODE_1() throws Exception {

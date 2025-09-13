@@ -1,0 +1,11 @@
+package SchoolStudent.core.SchoolLessonsAndCertificates.interficesForServices;
+
+
+import SchoolStudent.core.SchoolLessonsAndCertificates.dto.request.SaveStudentForSchoolLessonsAndCertificatesMicroserviceRequest;
+import SchoolStudent.core.SchoolLessonsAndCertificates.dto.response.SaveStudentForSchoolLessonsAndCertificatesMicroserviceResponse;
+
+public interface SchoolLessonsAndCertificatesMicroserviceForSaveStudent {
+
+    SaveStudentForSchoolLessonsAndCertificatesMicroserviceResponse execute(SaveStudentForSchoolLessonsAndCertificatesMicroserviceRequest request);
+
+}

@@ -2,7 +2,7 @@ package SchoolStudent.core.web;
 
 import SchoolStudent.core.request.student.DeleteStudentFromDatabaseRequest;
 import SchoolStudent.core.response.student.DeleteStudentFromDatabaseResponse;
-import SchoolStudent.core.service.DeleteStudentFromDatabaseService;
+import SchoolStudent.core.service.interfeicesForServices.DeleteStudentFromDatabaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

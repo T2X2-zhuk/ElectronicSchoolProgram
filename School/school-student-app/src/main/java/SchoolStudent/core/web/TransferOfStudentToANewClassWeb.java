@@ -2,7 +2,7 @@ package SchoolStudent.core.web;
 
 import SchoolStudent.core.request.student.TransferOfStudentToANewClassRequest;
 import SchoolStudent.core.response.student.TransferOfStudentToANewClassResponse;
-import SchoolStudent.core.service.TransferOfStudentToANewClassService;
+import SchoolStudent.core.service.interfeicesForServices.TransferOfStudentToANewClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

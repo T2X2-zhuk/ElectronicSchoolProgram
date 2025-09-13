@@ -1,7 +1,7 @@
 {
   "errors" :[
   {
-    "errorCode" : "ERROR_CODE_2",
+    "errorCode" : "ERROR_CODE_1",
     "description"  : "There is no such lesson!"
   }
 ]

@@ -54,4 +54,10 @@
         </sql>
     </changeSet>
 
+    <changeSet id="6" author="Tarasov">
+        <sql>INSERT INTO students(first_name, last_name, fatherland, email, number, category)
+            VALUES('Harbon', 'Jacknoni' , 'Manivaki', 'bornr5606@gmail.com', 4, 'B');
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>

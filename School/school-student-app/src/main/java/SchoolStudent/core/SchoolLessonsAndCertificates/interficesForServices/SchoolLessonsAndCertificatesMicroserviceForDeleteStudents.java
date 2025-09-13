@@ -1,0 +1,10 @@
+package SchoolStudent.core.SchoolLessonsAndCertificates.interficesForServices;
+
+import SchoolStudent.core.SchoolLessonsAndCertificates.dto.request.DeleteStudentForSchoolLessonsAndCertificatesMicroserviceRequest;
+import SchoolStudent.core.SchoolLessonsAndCertificates.dto.response.DeleteStudentForSchoolLessonsAndCertificatesMicroserviceResponse;
+
+public interface SchoolLessonsAndCertificatesMicroserviceForDeleteStudents {
+
+    DeleteStudentForSchoolLessonsAndCertificatesMicroserviceResponse execute(DeleteStudentForSchoolLessonsAndCertificatesMicroserviceRequest request);
+
+}
