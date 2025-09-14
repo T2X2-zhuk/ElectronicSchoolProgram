@@ -19,8 +19,8 @@ public class LoginIntoStudentPageValidator {
         if (validation.mustNotBeEmptyPassword(request.getPassword()).isPresent()){
             errorDTOS.add(validation.mustNotBeEmptyPassword(request.getPassword()).get());
             return errorDTOS;
-        }else if (validation.suchPasswordIsNotExistsValidation(request.getPassword()).isPresent()){
-            errorDTOS.add(validation.suchPasswordIsNotExistsValidation(request.getPassword()).get());
+        }else if (validation.suchPasswordIsNotExistsValidationStudent(request.getPassword()).isPresent()){
+            errorDTOS.add(validation.suchPasswordIsNotExistsValidationStudent(request.getPassword()).get());
             return errorDTOS;
         }
         return errorDTOS;

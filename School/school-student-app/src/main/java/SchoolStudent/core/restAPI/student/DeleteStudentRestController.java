@@ -1,8 +1,9 @@
-package SchoolStudent.core.restAPI;
+package SchoolStudent.core.restAPI.student;
 
-import SchoolStudent.core.request.student.RegistrationStudentInDatabaseRequest;
-import SchoolStudent.core.response.student.RegistrationStudentInDatabaseResponse;
-import SchoolStudent.core.service.interfeicesForServices.RegistrationStudentInDatabaseService;
+import SchoolStudent.core.request.student.DeleteStudentFromDatabaseRequest;
+import SchoolStudent.core.response.student.DeleteStudentFromDatabaseResponse;
+import SchoolStudent.core.restAPI.common.RestRequestExecutionTimeLogger;
+import SchoolStudent.core.service.interfeicesForServices.DeleteStudentFromDatabaseService;
 import com.google.common.base.Stopwatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/school/student/api")
-public class SaveSchoolStudentRestController {
+public class DeleteStudentRestController {
 
-    @Autowired private RegistrationStudentInDatabaseService service;
+    @Autowired private DeleteStudentFromDatabaseService service;
     @Autowired private RestRequestExecutionTimeLogger restRequestExecutionTimeLogger;
-    @PostMapping(path = "/saveStudent",
+    @PostMapping(path = "/deleteStudent",
             consumes = "application/json",
             produces = "application/json")
-    public RegistrationStudentInDatabaseResponse execute(@RequestBody RegistrationStudentInDatabaseRequest request) {
+    public DeleteStudentFromDatabaseResponse execute(@RequestBody DeleteStudentFromDatabaseRequest request) {
         Stopwatch stopwatch = Stopwatch.createStarted();
-        RegistrationStudentInDatabaseResponse response = service.execute(request);
+        DeleteStudentFromDatabaseResponse response = service.execute(request);
         restRequestExecutionTimeLogger.logExecutionTime(stopwatch);
         return response;
     }

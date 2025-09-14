@@ -1,4 +1,4 @@
-package SchoolStudent.core.validations;
+package SchoolStudent.core.validations.MethodsValidatorClasses;
 
 import SchoolStudent.core.util.ErrorCodeUtil;
 import SchoolStudent.core.util.Placeholder;

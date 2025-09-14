@@ -46,8 +46,8 @@ class RegistrationStudentValidationNumberCategoryFields implements RegistrationS
     private Optional<ValidationErrorDTO> validateSpecificCode(RegistrationStudentInDatabaseRequest request) {
         if (validation.mustNotBeEmptySpecialCode(request.getSpecificCodeForRegistration()).isPresent()){
             return validation.mustNotBeEmptySpecialCode(request.getSpecificCodeForRegistration());
-        }  if (validation.theWrongSpecificCodeForRegistration(request.getSpecificCodeForRegistration()).isPresent()){
-            return validation.theWrongSpecificCodeForRegistration(request.getSpecificCodeForRegistration());
+        }  if (validation.theWrongSpecificCodeForRegistrationStudent(request.getSpecificCodeForRegistration()).isPresent()){
+            return validation.theWrongSpecificCodeForRegistrationStudent(request.getSpecificCodeForRegistration());
         }
         return Optional.empty();
     }

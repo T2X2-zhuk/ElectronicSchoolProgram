@@ -1,8 +1,9 @@
-package SchoolStudent.core.restAPI;
+package SchoolStudent.core.restAPI.student;
 
-import SchoolStudent.core.request.student.GetAllStudentsBySchoolClassRequest;
-import SchoolStudent.core.response.student.GetAllStudentsBySchoolClassResponse;
-import SchoolStudent.core.service.interfeicesForServices.GetAllStudentsBySchoolClassService;
+import SchoolStudent.core.request.student.RegistrationStudentInDatabaseRequest;
+import SchoolStudent.core.response.student.RegistrationStudentInDatabaseResponse;
+import SchoolStudent.core.restAPI.common.RestRequestExecutionTimeLogger;
+import SchoolStudent.core.service.interfeicesForServices.RegistrationStudentInDatabaseService;
 import com.google.common.base.Stopwatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/school/student/api")
-public class GetAllStudentsBySchoolClassRestController {
+public class SaveSchoolStudentRestController {
 
-    @Autowired private GetAllStudentsBySchoolClassService service;
+    @Autowired private RegistrationStudentInDatabaseService service;
     @Autowired private RestRequestExecutionTimeLogger restRequestExecutionTimeLogger;
-    @PostMapping(path = "/getAllSchoolStudentBySchoolClass",
+    @PostMapping(path = "/saveStudent",
             consumes = "application/json",
             produces = "application/json")
-    public GetAllStudentsBySchoolClassResponse execute(@RequestBody GetAllStudentsBySchoolClassRequest request) {
+    public RegistrationStudentInDatabaseResponse execute(@RequestBody RegistrationStudentInDatabaseRequest request) {
         Stopwatch stopwatch = Stopwatch.createStarted();
-        GetAllStudentsBySchoolClassResponse response = service.execute(request);
+        RegistrationStudentInDatabaseResponse response = service.execute(request);
         restRequestExecutionTimeLogger.logExecutionTime(stopwatch);
         return response;
     }

@@ -21,7 +21,7 @@ class DeleteStudentValidator {
 
     private List<ValidationErrorDTO> collectStudentErrors(DeleteStudentFromDatabaseRequest request){
         List<ValidationErrorDTO> errors = new ArrayList<>();
-        validation.notEnteredASingleCorrectPassword(request.getPasswords()).ifPresent(errors::add);
+        validation.notEnteredASingleCorrectPasswordForStudent(request.getPasswords()).ifPresent(errors::add);
         return errors;
     }
 }

@@ -1,4 +1,4 @@
-package SchoolStudent.core.web;
+package SchoolStudent.core.web.student;
 
 import SchoolStudent.core.request.student.RegistrationStudentInDatabaseRequest;
 import SchoolStudent.core.response.student.RegistrationStudentInDatabaseResponse;

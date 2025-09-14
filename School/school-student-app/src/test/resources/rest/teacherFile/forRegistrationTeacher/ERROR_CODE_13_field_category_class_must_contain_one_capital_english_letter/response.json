@@ -1,0 +1,8 @@
+{
+  "errors": [
+    {
+      "errorCode": "ERROR_CODE_13",
+      "description": "Field category class must contain one capital English letter!"
+    }
+  ]
+}

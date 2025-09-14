@@ -1,4 +1,4 @@
-package SchoolStudent.core.restAPI;
+package SchoolStudent.core.restAPI.common;
 
 import com.google.common.base.Stopwatch;
 import lombok.extern.slf4j.Slf4j;

@@ -1,0 +1,8 @@
+{
+  "errors": [
+    {
+      "errorCode": "ERROR_CODE_5",
+      "description": "Field email must not be empty!"
+    }
+  ]
+}

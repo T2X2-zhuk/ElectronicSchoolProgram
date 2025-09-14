@@ -1,4 +1,4 @@
-package SchoolStudent.core.web;
+package SchoolStudent.core.web.student;
 
 import SchoolStudent.core.request.student.TransferOfStudentToANewClassRequest;
 import SchoolStudent.core.response.student.TransferOfStudentToANewClassResponse;

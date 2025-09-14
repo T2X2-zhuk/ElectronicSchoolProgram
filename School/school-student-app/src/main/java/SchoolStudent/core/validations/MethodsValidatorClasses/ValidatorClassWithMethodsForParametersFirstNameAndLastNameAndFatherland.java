@@ -1,7 +1,6 @@
 package SchoolStudent.core.validations.MethodsValidatorClasses;
 
 import SchoolStudent.core.dto.ValidationErrorDTO;
-import SchoolStudent.core.validations.ValidationErrorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

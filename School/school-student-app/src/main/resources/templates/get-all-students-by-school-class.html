@@ -142,8 +142,8 @@
     <div class="results" th:if="${response.errors != null}">
         <h3 style="color: #ffb74d;">Ошибки:</h3>
         <div th:each="error : ${response.errors}">
-            <label class="white-background-label" th:text="${error.errorCode}"></label>
-            <label class="white-background-label" th:text="${error.description}"></label>
+            <label class="white-background-label" style="color:blue" th:text="${error.errorCode}"></label>
+            <label class="white-background-label" style="color:blue" th:text="${error.description}"></label>
         </div>
     </div>
 

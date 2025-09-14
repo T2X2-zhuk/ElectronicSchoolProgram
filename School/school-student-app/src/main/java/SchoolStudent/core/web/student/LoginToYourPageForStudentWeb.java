@@ -1,4 +1,4 @@
-package SchoolStudent.core.web;
+package SchoolStudent.core.web.student;
 
 import SchoolStudent.core.domain.SchoolStudent;
 import SchoolStudent.core.request.student.LoginToYourStudentPageRequest;

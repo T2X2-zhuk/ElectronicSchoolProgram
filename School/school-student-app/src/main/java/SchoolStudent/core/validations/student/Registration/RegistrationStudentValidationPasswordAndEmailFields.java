@@ -30,8 +30,8 @@ import java.util.Optional;
         }else if (validation.emailYourEmailIsNotCorrectError(request.getEmail()).isPresent()){
             return validation.emailYourEmailIsNotCorrectError(request.getEmail());
             }
-        else if (validation.suchEmailAlreadyExistsError(request.getEmail()).isPresent()){
-                return validation.suchEmailAlreadyExistsError(request.getEmail());
+        else if (validation.suchEmailAlreadyExistsErrorForStudent(request.getEmail()).isPresent()){
+                return validation.suchEmailAlreadyExistsErrorForStudent(request.getEmail());
             }
             return Optional.empty();
     }
@@ -39,8 +39,8 @@ import java.util.Optional;
     private Optional<ValidationErrorDTO> validatePassword(RegistrationStudentInDatabaseRequest request) {
         if (validation.mustNotBeEmptyPassword(request.getPassword()).isPresent()){
             return validation.mustNotBeEmptyPassword(request.getPassword());
-        }else if (validation.suchPasswordAlreadyExistsValidation(request.getPassword()).isPresent()){
-            return validation.suchPasswordAlreadyExistsValidation(request.getPassword());
+        }else if (validation.suchPasswordAlreadyExistsForStudent(request.getPassword()).isPresent()){
+            return validation.suchPasswordAlreadyExistsForStudent(request.getPassword());
         }
         return Optional.empty();
     }

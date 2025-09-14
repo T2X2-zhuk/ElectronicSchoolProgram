@@ -3,7 +3,6 @@ package SchoolStudent.core.validations.MethodsValidatorClasses;
 import SchoolStudent.core.database.CodeForRegistrationRepository;
 import SchoolStudent.core.database.SchoolClassRepository;
 import SchoolStudent.core.dto.ValidationErrorDTO;
-import SchoolStudent.core.validations.ValidationErrorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -55,9 +54,15 @@ import java.util.Optional;
                 : Optional.empty();
     }
 
-    public Optional<ValidationErrorDTO> theWrongSpecificCodeForRegistration(String specificCodeForRegistration){
+    public Optional<ValidationErrorDTO> theWrongSpecificCodeForRegistrationStudent(String specificCodeForRegistration){
         return (code.findByspecificCodeForRegistrationForStudent(specificCodeForRegistration).isEmpty())
                 ? Optional.of(errorFactory.buildError("ERROR_CODE_16"))
+                : Optional.empty();
+    }
+
+    public Optional<ValidationErrorDTO> theWrongSpecificCodeForRegistrationTeacher(String specificCodeForRegistration){
+        return (code.findByspecificCodeForRegistrationForTeacher(specificCodeForRegistration).isEmpty())
+                ? Optional.of(errorFactory.buildError("ERROR_CODE_19"))
                 : Optional.empty();
     }
     private boolean isNullOrBlankOrEmpty(String parameter) {
