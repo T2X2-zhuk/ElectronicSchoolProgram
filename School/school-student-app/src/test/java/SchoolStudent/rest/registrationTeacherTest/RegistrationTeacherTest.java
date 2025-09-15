@@ -143,6 +143,12 @@ public class RegistrationTeacherTest extends RegistrationTeacherTestCase {
         executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_17_such_lesson_is_not_database");
     }
 
+    @Test
+    @DisplayName("ERROR_CODE_20_lesson_must_not_be_empty")
+    public void check_ERROR_CODE_20() throws Exception {
+        mockUnSuccessfulRegistration();
+        executeAndCompare(TEST_FILE_BASE_FOLDER + "/ERROR_CODE_20_lesson_must_not_be_empty");
+    }
     private void mockUnSuccessfulRegistration() {
         GettingTheNameOfAnExistingLessonForSchoolLessonsAndCertificatesMicroserviceResponse mockResponse =
                 new GettingTheNameOfAnExistingLessonForSchoolLessonsAndCertificatesMicroserviceResponse();

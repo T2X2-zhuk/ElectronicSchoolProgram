@@ -54,8 +54,7 @@ body {
         input[type="text"],
         input[type="email"],
         input[type="number"],
-        input[type="password"],
-        input[type="subject"]
+        input[type="password"]
          {
             width: 100%;
             padding: 12px 15px;
@@ -144,8 +143,8 @@ body {
         <label for="password">Password:</label>
         <input type="password" id="password" th:field="${request.password}">
 
-        <label for="subject">Password:</label>
-        <input type="password" id="subject" th:field="${request.subject}">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" th:field="${request.subject}">
 
         <label for="number">Number class where student will be teaching:</label>
         <input type="number" id="number" th:field="${request.number}">

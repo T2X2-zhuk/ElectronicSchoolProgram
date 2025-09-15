@@ -20,7 +20,7 @@ import java.util.Optional;
     @Autowired private LessonRepository lessonRepository;
 
     public  Optional<ValidationErrorDTO> isLessonInDatabaseError(String subjectName){
-        return (lessonRepository.findByName(subjectName)).isEmpty()
+        return (lessonRepository.findByName(subjectName).isEmpty())
                 ? Optional.of(errorFactory.buildError("ERROR_CODE_1"))
                 : Optional.empty();
     }

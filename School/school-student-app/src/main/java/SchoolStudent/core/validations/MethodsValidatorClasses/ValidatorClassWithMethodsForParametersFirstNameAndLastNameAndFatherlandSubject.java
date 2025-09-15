@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class ValidatorClassWithMethodsForParametersFirstNameAndLastNameAndFatherland{
+public class ValidatorClassWithMethodsForParametersFirstNameAndLastNameAndFatherlandSubject {
 
     @Autowired
     private ValidationErrorFactory errorFactory;
@@ -30,7 +30,11 @@ public class ValidatorClassWithMethodsForParametersFirstNameAndLastNameAndFather
                 : Optional.empty();
     }
 
-
+    public Optional<ValidationErrorDTO> subjectMustNotBeEmpty(String subject){
+        return (isNullOrBlankOrEmpty(subject))
+                ? Optional.of(errorFactory.buildError("ERROR_CODE_20"))
+                : Optional.empty();
+    }
     private boolean isNullOrBlankOrEmpty(String parameter) {
         return parameter == null || parameter.isBlank() || parameter.isEmpty();
     }
