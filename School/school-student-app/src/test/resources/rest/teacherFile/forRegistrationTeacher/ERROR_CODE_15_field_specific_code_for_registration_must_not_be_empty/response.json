@@ -1,8 +1,0 @@
-{
-  "errors": [
-    {
-      "errorCode": "ERROR_CODE_15",
-      "description": "Field specific code for registration must not be empty!"
-    }
-  ]
-}

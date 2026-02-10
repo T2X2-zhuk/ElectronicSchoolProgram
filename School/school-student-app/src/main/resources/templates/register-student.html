@@ -128,28 +128,28 @@ body {
     <h1>Registration Student in Database</h1>
     <form action="#" th:action="@{register-student}" th:object="${request}" method="post">
         <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" th:field="${request.firstName}">
+        <input type="text" id="firstName" th:field="${request.schoolStudentDTO.firstName}">
 
         <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" th:field="${request.lastName}">
+        <input type="text" id="lastName" th:field="${request.schoolStudentDTO.lastName}">
 
         <label for="fatherland">Fatherland:</label>
-        <input type="text" id="fatherland" th:field="${request.fatherland}">
+        <input type="text" id="fatherland" th:field="${request.schoolStudentDTO.fatherland}">
 
         <label for="email">Email example - example@gmail.com:</label>
-        <input type="email" id="email" th:field="${request.email}">
+        <input type="email" id="email" th:field="${request.schoolStudentDTO.email}">
 
         <label for="password">Password:</label>
-        <input type="password" id="password" th:field="${request.password}">
+        <input type="password" id="password" th:field="${request.schoolStudentDTO.password}">
 
         <label for="number">Number class where student will be teaching:</label>
-        <input type="number" id="number" th:field="${request.number}">
+        <input type="number" id="number" th:field="${request.schoolStudentDTO.schoolClassDTO.number}">
 
         <label for="category">Class category :</label>
-        <input type="text" id="category" th:field="${request.category}">
+        <input type="text" id="category" th:field="${request.schoolStudentDTO.schoolClassDTO.category}">
 
         <label for="specificCodeForRegistration">Specific code for registration:</label>
-        <input type="text" id="specificCodeForRegistration" th:field="${request.specificCodeForRegistration}">
+        <input type="text" id="specificCodeForRegistration" th:field="${request.specificCodeForRegistrationInElectronicSchoolDTO.specificCodeForRegistrationForStudent}">
 
         <button type="submit">Save student</button>
     </form>

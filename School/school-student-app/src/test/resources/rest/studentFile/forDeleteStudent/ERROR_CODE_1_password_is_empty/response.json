@@ -1,8 +1,0 @@
-{
-  "errors": [
-    {
-      "errorCode": "ERROR_CODE_4",
-      "description": "You have not entered a single correct password that is in the database!"
-    }
-  ]
-}

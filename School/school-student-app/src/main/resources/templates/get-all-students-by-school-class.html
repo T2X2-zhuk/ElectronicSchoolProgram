@@ -132,13 +132,12 @@
     <h2>Show all students by school class</h2>
     <form action="#" th:action="@{get-all-students-by-school-class}" th:object="${request}" method="post">
         <label for="number">Number class:</label>
-        <input type="number" id="number" th:field="${request.number}">
+        <input type="number" id="number" th:field="${request.schoolClassDTO.number}">
         <label for="category">Class category:</label>
-        <input type="text" id="category" th:field="${request.category}">
+        <input type="text" id="category" th:field="${request.schoolClassDTO.category}">
         <button type="submit">Отправить</button>
     </form>
 
-    <!-- Ошибки -->
     <div class="results" th:if="${response.errors != null}">
         <h3 style="color: #ffb74d;">Ошибки:</h3>
         <div th:each="error : ${response.errors}">
@@ -147,16 +146,15 @@
         </div>
     </div>
 
-    <!-- Список студентов -->
-    <div class="results" th:if="${response.schoolStudentList != null}">
+    <div class="results" th:if="${response.schoolStudentDTOS != null}">
         <h3 style="color: #80e27e;">Список студентов:</h3>
-        <div th:each="student : ${response.schoolStudentList}" class="student-card">
-            <span th:text="${student.first_name}"></span>
-            <span th:text="${student.last_name}"></span>
+        <div th:each="student : ${response.schoolStudentDTOS}" class="student-card">
+            <span th:text="${student.firstName}"></span>
+            <span th:text="${student.lastName}"></span>
             <span th:text="${student.fatherland}"></span><br>
             <strong>Class:</strong>
-            <span th:text="${student.classes_id.number}"></span> –
-            <span th:text="${student.classes_id.category}"></span><br>
+            <span th:text="${student.schoolClassDTO.number}"></span> –
+            <span th:text="${student.schoolClassDTO.category}"></span><br>
             <strong>Email:</strong> <span th:text="${student.email}"></span>
         </div>
     </div>

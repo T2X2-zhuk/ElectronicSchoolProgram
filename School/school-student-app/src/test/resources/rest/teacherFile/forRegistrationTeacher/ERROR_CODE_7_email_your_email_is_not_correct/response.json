@@ -1,8 +1,0 @@
-{
-  "errors": [
-    {
-      "errorCode": "ERROR_CODE_7",
-      "description": "Field email your email is not correct,example of correct mail - john.smith@gmail.com!"
-    }
-  ]
-}

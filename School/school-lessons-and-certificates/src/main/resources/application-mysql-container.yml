@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://school-lessons-and-certificates-db:3306/lessons_and_certificates_db
+    username: root
+    password: fkmdbyjdbx383

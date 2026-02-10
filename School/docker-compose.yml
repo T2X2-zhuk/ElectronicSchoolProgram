@@ -1,39 +1,75 @@
-version: '1'
-
 networks:
   danil-net-electronic-school:
 
 services:
-  mysql-app:
+  school-student-app-db:
     networks: [danil-net-electronic-school]
-    container_name: mysql-container2
+    container_name: school-student-app-db
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: fkmdbyjdbx383
-    volumes:
-      - ./mysql-database-init:/docker-entrypoint-initdb.d
-      - db_data:/var/lib/mysql
+      MYSQL_DATABASE: school_student_db
     ports:
       - "3308:3306"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root --password=fkmdbyjdbx383"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
+  school-lessons-and-certificates-db:
+    networks: [danil-net-electronic-school]
+    container_name: school-lessons-and-certificates-db
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: fkmdbyjdbx383
+      MYSQL_DATABASE: lessons_and_certificates_db
+    ports:
+      - "3309:3306"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root --password=fkmdbyjdbx383"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
   school-student-app:
     networks: [danil-net-electronic-school]
-    container_name: student-container
+    container_name: school-student-app
     image: school-student:1.0.1
     ports:
       - "8093:8080"
     depends_on:
-      - mysql-app
-      - school-lessons-and-certificates
+      school-student-app-db:
+        condition: service_healthy
+      school-lessons-and-certificates:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8093/actuator/health || exit 1" ]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 120s
+    volumes:
+      - ./school-student-app/logs/server1:/School/school-student-app/logs
 
   school-lessons-and-certificates:
     networks: [danil-net-electronic-school]
-    container_name: lessons-and-certificates-container
+    container_name: school-lessons-and-certificates
     image: lessons-and-certificates:1.0.1
     ports:
       - "8092:8080"
     depends_on:
-      - mysql-app
-volumes:
-  db_data:
+      school-lessons-and-certificates-db:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8092/actuator/health || exit 1" ]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 120s
+    volumes:
+      - ./school-lessons-and-certificates/logs/server1:/School/school-lessons-and-certificates/logs

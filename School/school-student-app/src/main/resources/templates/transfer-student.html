@@ -136,10 +136,10 @@ li {
         <input type="email" id="email" th:field="${request.email}">
 
         <label for="newClassNumber">Number class where student will be teaching:</label>
-        <input type="number" id="newClassNumber" th:field="${request.newClassNumber}">
+        <input type="number" id="newClassNumber" th:field="${request.schoolClassDTO.number}">
 
         <label for="category">Class category :</label>
-        <input type="text" id="category" th:field="${request.category}">
+        <input type="text" id="category" th:field="${request.schoolClassDTO.category}">
 
         <button type="submit">Отправить</button>
     </form>

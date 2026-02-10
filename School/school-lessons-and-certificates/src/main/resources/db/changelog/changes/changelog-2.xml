@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
 
-    <changeSet id="5" author="Tarasov">
+    <changeSet id="4" author="Tarasov">
         <sql>
             INSERT INTO lessons(name, description)
             VALUES('Estonian language', 'The Estonian language subject includes the study of grammar, vocabulary and phonetics of the Estonian language, which is a Uralic language and has common features with Finnish.');

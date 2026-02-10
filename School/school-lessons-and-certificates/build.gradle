@@ -1,60 +1,91 @@
 plugins {
-    id 'org.springframework.boot' version "3.2.5"
-    id 'com.palantir.docker' version '0.35.0'
     id 'java'
+    id 'idea'
+    id 'org.springframework.boot' version "3.4.5"
+    id 'com.palantir.docker' version '0.36.0'
+}
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
 }
 
+compileJava {
+    options.encoding = "UTF-8"
+}
+
+compileTestJava {
+    options.encoding = "UTF-8"
+}
+ext {
+    set("springBootVersion", "3.4.5")
+}
 dependencies {
     implementation('mysql:mysql-connector-java:8.0.22')
     implementation('org.hibernate:hibernate-core:6.5.0.Final')
     implementation ('org.liquibase:liquibase-core:4.27.0')
     implementation('com.h2database:h2:2.2.224')
-    implementation('org.springframework.boot:spring-boot-starter-thymeleaf:3.2.5')
-    implementation('org.springframework.boot:spring-boot-starter-web:3.2.5')
-    implementation('org.springframework.boot:spring-boot-starter-data-jpa:3.2.5')
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion")
     implementation('com.fasterxml.jackson.core:jackson-core:2.14.2')
     implementation('com.google.guava:guava:31.0.1-jre')
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.3")
 
-
     compileOnly('org.projectlombok:lombok:1.18.32')
     annotationProcessor('org.projectlombok:lombok:1.18.32')
-
     testCompileOnly('org.projectlombok:lombok:1.18.32')
     testAnnotationProcessor('org.projectlombok:lombok:1.18.32')
-
-    testImplementation('org.springframework.boot:spring-boot-starter-test:3.2.5')
-
+    testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     testImplementation('org.hamcrest:hamcrest:2.2')
-
     testImplementation('uk.org.webcompere:model-assert:1.0.0')
+    testImplementation ('org.junit.jupiter:junit-jupiter-api:5.8.1')
+}
+clean.doFirst {
+    delete "${projectDir}/logs/"
+    println "${projectDir}/logs/"
 
-    test {
-        useJUnitPlatform()
+    delete "${projectDir}/out/"
+    println "${projectDir}/out/"
+
+    delete "${projectDir}/build/"
+    println "${projectDir}/build/"
+}
+task createLogsDirs {
+    doLast {
+        def baseDirs = [
+                "logs/server1",
+                "logs/server2"
+        ]
+
+        baseDirs.each { dirPath ->
+            def dir = file(dirPath)
+            if (!dir.exists()) {
+                dir.mkdirs()
+                println "Created directory: ${dir}"
+            }
+        }
     }
 }
 
 jar {
     enabled = false
 }
-
-tasks.withType(Test) {
-    // Полностью отключает выполнение тестов
-    enabled = false
-}
-
 bootJar {
     enabled = true
     archiveBaseName = 'lessons-and-certificates'
     archiveVersion = '1.0.1'
+    dependsOn createLogsDirs
 }
-
+build {
+    dependsOn createLogsDirs
+}
+dockerPrepare {
+    dependsOn bootJar
+}
 docker {
     name "lessons-and-certificates:1.0.1"
     files 'build/libs/lessons-and-certificates-1.0.1.jar'
-    files 'wait-for-it.sh'
     buildArgs(['JAR_FILE': "lessons-and-certificates-1.0.1.jar"])
 }
 test {

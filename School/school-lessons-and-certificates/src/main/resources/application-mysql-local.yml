@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/lessons_and_certificates_database?useSSL=false&serverTimezone=Europe/Tallinn&allowPublicKeyRetrieval=true
+    username: root
+    password: fkmdbyjdbx383

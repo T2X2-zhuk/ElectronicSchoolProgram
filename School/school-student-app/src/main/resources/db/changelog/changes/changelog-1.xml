@@ -66,4 +66,5 @@
                                  referencedTableName="classes"
                                  referencedColumnNames="id"/>
     </changeSet>
+
 </databaseChangeLog>

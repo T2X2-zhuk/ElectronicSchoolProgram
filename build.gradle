@@ -9,7 +9,7 @@ plugins {
     id 'idea'
 }
 
-group 'org.example'
+group 'ElectronicSchoolProgram'
 
 subprojects {
 
@@ -17,8 +17,8 @@ subprojects {
     apply plugin: 'idea'
 
     version '1.0-SNAPSHOT'
-    sourceCompatibility = '19'
-    targetCompatibility = '19'
+    sourceCompatibility = '21'
+    targetCompatibility = '21'
 
 
     repositories {
@@ -32,7 +32,6 @@ subprojects {
     compileTestJava {
         options.encoding = "UTF-8"
     }
-
     test {
         useJUnitPlatform()
     }

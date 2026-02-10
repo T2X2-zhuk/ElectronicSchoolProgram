@@ -1,8 +1,0 @@
-{
-  "errors": [
-    {
-      "errorCode": "ERROR_CODE_11",
-      "description": "Number class must be 1-11!"
-    }
-  ]
-}

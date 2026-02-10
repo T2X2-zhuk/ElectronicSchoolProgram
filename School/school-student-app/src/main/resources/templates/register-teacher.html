@@ -128,32 +128,32 @@ body {
 <div class="overlay">
     <h1>Registration teacher in database</h1>
     <form action="#" th:action="@{register-teacher}" th:object="${request}" method="post">
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" th:field="${request.first_name}">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" th:field="${request.teacherDTO.firstName}">
 
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" th:field="${request.last_name}">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" th:field="${request.teacherDTO.lastName}">
 
         <label for="fatherland">Fatherland:</label>
-        <input type="text" id="fatherland" th:field="${request.fatherland}">
+        <input type="text" id="fatherland" th:field="${request.teacherDTO.fatherland}">
 
         <label for="email">Email example - example@gmail.com:</label>
-        <input type="email" id="email" th:field="${request.email}">
+        <input type="email" id="email" th:field="${request.teacherDTO.email}">
 
         <label for="password">Password:</label>
-        <input type="password" id="password" th:field="${request.password}">
+        <input type="password" id="password" th:field="${request.teacherDTO.password}">
 
         <label for="subject">Subject:</label>
-        <input type="text" id="subject" th:field="${request.subject}">
+        <input type="text" id="subject" th:field="${request.teacherDTO.subject}">
 
         <label for="number">Number class where student will be teaching:</label>
-        <input type="number" id="number" th:field="${request.number}">
+        <input type="number" id="number" th:field="${request.teacherDTO.schoolClassDTO.number}">
 
         <label for="category">Class category :</label>
-        <input type="text" id="category" th:field="${request.category}">
+        <input type="text" id="category" th:field="${request.teacherDTO.schoolClassDTO.category}">
 
-        <label for="specificCodeForRegistrationTeacher">Specific code for registration:</label>
-        <input type="text" id="specificCodeForRegistrationTeacher" th:field="${request.specificCodeForRegistrationTeacher}">
+        <label for="specificCodeForRegistrationForTeacher">Specific code for registration:</label>
+        <input type="text" id="specificCodeForRegistrationForTeacher" th:field="${request.specificCodeForRegistrationInElectronicSchoolDTO.specificCodeForRegistrationForTeacher}">
 
         <button type="submit">Save teacher</button>
     </form>

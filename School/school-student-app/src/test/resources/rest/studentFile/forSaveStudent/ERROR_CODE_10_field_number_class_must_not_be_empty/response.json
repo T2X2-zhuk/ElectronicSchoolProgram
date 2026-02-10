@@ -1,8 +1,0 @@
-{
-  "errors": [
-    {
-      "errorCode": "ERROR_CODE_10",
-      "description": "Field number class must not be empty!"
-    }
-  ]
-}

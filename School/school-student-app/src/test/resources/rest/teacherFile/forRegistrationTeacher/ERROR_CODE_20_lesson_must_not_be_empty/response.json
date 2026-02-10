@@ -1,8 +1,0 @@
-{
-  "errors": [
-    {
-      "errorCode": "ERROR_CODE_20",
-      "description": "Field subject must not be empty!"
-    }
-  ]
-}

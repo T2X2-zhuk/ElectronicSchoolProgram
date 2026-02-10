@@ -87,13 +87,13 @@ body {
 
 <div class="overlay">
     <h2>Добро пожаловать,<br>
-        <span th:text="${schoolStudent.first_name}">[Имя]</span>
-        <span th:text="${schoolStudent.last_name}">[Фамилия]</span>
-        <span th:text="${schoolStudent.fatherland}">[Отчество]</span>!
+        <span th:text="${schoolStudentDTO.firstName}">[Имя]</span>
+        <span th:text="${schoolStudentDTO.lastName}">[Фамилия]</span>
+        <span th:text="${schoolStudentDTO.fatherland}">[Отчество]</span>!
     </h2>
 
     <a class="white-background-label"
-       th:href="@{|get-all-students-by-school-class?number=${schoolStudent.classes_id.number}&category=${schoolStudent.classes_id.category}|}"
+       th:href="@{|get-all-students-by-school-class?number=${schoolStudentDTO.schoolClassDTO.number}&category=${schoolStudentDTO.schoolClassDTO.category}|}"
        target="_blank">
         Посмотреть всех учеников вашего класса
     </a>

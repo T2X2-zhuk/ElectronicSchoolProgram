@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: school-lessons-and-certificates
+  profiles:
+    default: mysql-container
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    cache: false
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog-master.xml
+
+springdoc:
+  api-docs:
+    path: /electronic/school/api-docs
+
+server:
+  port: 8092
+api:
+  server:
+    url: http://localhost:8092
+# Enter to OpenDocs = http://localhost:8092/swagger-ui/index.html

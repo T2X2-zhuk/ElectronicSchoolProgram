@@ -94,8 +94,8 @@
 
 <div class="overlay">
     <h2>Delete student</h2>
-    <form action="#" th:action="@{delete-student}" th:object="${passwords}" method="post">
-        <input type="text" name="passwords" placeholder="Enter the passwords of the students separated by commas that you want to delete">
+    <form action="#" th:action="@{delete-student}" th:object="${request}" method="post">
+        <input type="text" name="emails" placeholder="Enter the emails of the students separated by commas that you want to delete">
         <br>
         <button type="submit">Отправить</button>
     </form>

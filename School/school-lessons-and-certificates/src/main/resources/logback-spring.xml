@@ -1,0 +1,88 @@
+<configuration>
+
+    <property name="LOGS" value="/School/school-lessons-and-certificates/logs"/>
+
+    <!-- ================== Console ================== -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}:%X{spanId}] %-5level %logger{36}.%M - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- ================== File appender for INFO/DEBUG/WARN  ================== -->
+    <appender name="FILE_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/app-info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/app-info-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}:%X{spanId}] %-5level %logger{36}.%M - %msg%n</pattern>
+        </encoder>
+        <!-- All, without ERROR -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- ================== File appender for ERROR ================== -->
+    <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/app-error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/app-error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}:%X{spanId}] %-5level %logger{36}.%M - %msg%n</pattern>
+        </encoder>
+        <!-- Only ERROR -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- ================== Asyns appender for INFO/DEBUG/WARN ================== -->
+    <appender name="ASYNC_FILE_INFO" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- Classic file appender -->
+        <appender-ref ref="FILE_INFO"/>
+        <queueSize>5000</queueSize>  <!-- Queue size -->
+        <discardingThreshold>0</discardingThreshold> <!-- Don't lose logs -->
+        <neverBlock>true</neverBlock> <!-- Never block the main thread -->
+    </appender>
+
+    <!-- ================== Asyns appender for ERROR ================== -->
+    <appender name="ASYNC_FILE_ERROR" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE_ERROR"/>
+        <queueSize>5000</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <neverBlock>true</neverBlock>
+    </appender>
+
+    <!-- ================== Root Logger ================== -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ASYNC_FILE_INFO"/>
+        <appender-ref ref="ASYNC_FILE_ERROR"/>
+    </root>
+
+    <!-- ================== Packages and classes ================== -->
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.hibernate" level="WARN"/>
+    <logger name="io.github.resilience4j.circuitbreaker" level="DEBUG"/>
+    <logger name="org.springframework.web.client.RestTemplate" level="DEBUG"/>
+
+    <logger name="rewardCalculation.calculate" level="DEBUG"/>
+    <logger name="rewardCalculation.rest" level="DEBUG"/>
+    <logger name="rewardCalculation.services" level="DEBUG"/>
+    <logger name="rewardCalculation.restClientRewardPayment" level="DEBUG"/>
+    <logger name="rewardCalculation.jpa.repository" level="INFO"/>
+    <logger name="rewardCalculation.validations" level="DEBUG"/>
+    <logger name="rewardCalculation.util" level="DEBUG"/>
+
+    <logger name="io.github.resilience4j" level="DEBUG"/>
+    <logger name="org.springframework.boot.actuate" level="INFO"/>
+    <logger name="io.micrometer" level="INFO"/>
+</configuration>
