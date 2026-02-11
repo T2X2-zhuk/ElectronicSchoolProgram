@@ -6,7 +6,7 @@ import SchoolStudent.jpa.repositories.SchoolClassRepository;
 import SchoolStudent.jpa.repositories.SchoolStudentRepository;
 import SchoolStudent.request.student.TransferStudentToNewClassRequest;
 import SchoolStudent.response.student.TransferStudentToNewClassResponse;
-import SchoolStudent.util.ValidationError;
+import SchoolStudent.validations.MethodsValidatorClasses.ValidationError;
 import SchoolStudent.validations.student.TransferStudentToNewClassValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

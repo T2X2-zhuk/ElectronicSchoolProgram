@@ -1,7 +1,7 @@
 package SchoolStudent.validations.student;
 
 import SchoolStudent.request.student.TransferStudentToNewClassRequest;
-import SchoolStudent.util.ValidationError;
+import SchoolStudent.validations.MethodsValidatorClasses.ValidationError;
 import SchoolStudent.validations.MethodsValidatorClasses.ValidatorClassWithMethodsForSchoolClassParameters;
 import SchoolStudent.validations.MethodsValidatorClasses.ValidatorClassWithMethodsForSchoolStudentParameters;
 import lombok.RequiredArgsConstructor;

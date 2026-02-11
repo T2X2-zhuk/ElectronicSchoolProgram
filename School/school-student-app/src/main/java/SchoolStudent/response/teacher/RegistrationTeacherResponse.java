@@ -1,6 +1,6 @@
 package SchoolStudent.response.teacher;
 
-import SchoolStudent.request.common.CoreResponse;
+import SchoolStudent.util.CoreResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

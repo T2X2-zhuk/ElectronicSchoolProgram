@@ -5,10 +5,10 @@ import SchoolStudent.jpa.domain.SchoolStudent;
 import SchoolStudent.jpa.repositories.SchoolStudentRepository;
 import SchoolStudent.request.student.DeleteStudentRequest;
 import SchoolStudent.response.student.DeleteStudentResponse;
-import SchoolStudent.restAPI.microservice.schoolLessonsAndCertificates.controllers.SchoolLessonsAndCertificatesMicroserviceServiceImplForDeleteStudents;
-import SchoolStudent.restAPI.microservice.schoolLessonsAndCertificates.dto.request.DeleteStudentsLessonsAndCertificatesMicroserviceRequest;
-import SchoolStudent.restAPI.microservice.schoolLessonsAndCertificates.dto.response.DeleteStudentsLessonsAndCertificatesMicroserviceResponse;
-import SchoolStudent.util.ValidationError;
+import SchoolStudent.restAPI.microservice.lessonsAndCertificates.controllers.LessonsAndCertificatesMicroserviceDeleteStudents;
+import SchoolStudent.restAPI.microservice.lessonsAndCertificates.request.DeleteStudentsLessonsAndCertificatesMicroserviceRequest;
+import SchoolStudent.restAPI.microservice.lessonsAndCertificates.response.DeleteStudentsLessonsAndCertificatesMicroserviceResponse;
+import SchoolStudent.validations.MethodsValidatorClasses.ValidationError;
 import SchoolStudent.validations.student.DeleteStudentValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ public class DeleteStudentService {
 
     private final SchoolStudentRepository repository;
     private final DeleteStudentValidator validator;
-    private final SchoolLessonsAndCertificatesMicroserviceServiceImplForDeleteStudents schoolLessonsAndCertificatesMicroserviceServiceImplForDeleteStudents;
+    private final LessonsAndCertificatesMicroserviceDeleteStudents lessonsAndCertificatesMicroserviceDeleteStudents;
 
     @Transactional
     public DeleteStudentResponse execute(DeleteStudentRequest request){
@@ -36,7 +36,7 @@ public class DeleteStudentService {
             return DeleteStudentResponse.builder().errors(validationErrors).build();
         }else {
             List<SchoolStudent> students = getStudents(request);
-            microserviceResponse = schoolLessonsAndCertificatesMicroserviceServiceImplForDeleteStudents.
+            microserviceResponse = lessonsAndCertificatesMicroserviceDeleteStudents.
                             execute(DeleteStudentsLessonsAndCertificatesMicroserviceRequest.builder().studentIds(getStudentIds(students)).build());
             deleteStudents(students);
         }

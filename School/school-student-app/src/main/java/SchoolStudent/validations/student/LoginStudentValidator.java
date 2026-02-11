@@ -1,7 +1,7 @@
 package SchoolStudent.validations.student;
 
 import SchoolStudent.request.student.LoginStudentRequest;
-import SchoolStudent.util.ValidationError;
+import SchoolStudent.validations.MethodsValidatorClasses.ValidationError;
 import SchoolStudent.validations.MethodsValidatorClasses.ValidatorClassWithMethodsForSchoolStudentParameters;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -8,7 +8,7 @@ import SchoolStudent.jpa.repositories.SchoolClassRepository;
 import SchoolStudent.jpa.repositories.SchoolStudentRepository;
 import SchoolStudent.request.student.GetStudentsBySchoolClassRequest;
 import SchoolStudent.response.student.GetStudentsBySchoolClassResponse;
-import SchoolStudent.util.ValidationError;
+import SchoolStudent.validations.MethodsValidatorClasses.ValidationError;
 import SchoolStudent.validations.student.GetStudentsBySchoolClassValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

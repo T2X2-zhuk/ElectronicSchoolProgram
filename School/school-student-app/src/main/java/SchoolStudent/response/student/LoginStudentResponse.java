@@ -1,7 +1,7 @@
 package SchoolStudent.response.student;
 
 import SchoolStudent.jpa.dto.SchoolStudentDTO;
-import SchoolStudent.request.common.CoreResponse;
+import SchoolStudent.util.CoreResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;

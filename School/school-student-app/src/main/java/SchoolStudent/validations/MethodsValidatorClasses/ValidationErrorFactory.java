@@ -2,7 +2,6 @@ package SchoolStudent.validations.MethodsValidatorClasses;
 
 import SchoolStudent.util.ErrorCodeUtil;
 import SchoolStudent.util.Placeholder;
-import SchoolStudent.util.ValidationError;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

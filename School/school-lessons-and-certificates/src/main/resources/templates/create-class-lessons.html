@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create class lessons</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-block {
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 6px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 400px;
+        }
+
+        table, th, td {
+            border: 1px solid #999;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        .errors {
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .success {
+            color: green;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Adding a lesson for classes</h2>
+
+<div th:if="${response.errors != null}" class="errors">
+    <div th:each="err : ${response.errors}">
+        <p th:text="${err.field + ' : ' + err.message}"></p>
+    </div>
+</div>
+
+<div th:if="${response.errors == null and response.message != null}" class="success">
+    <p th:text="${response.message}"></p>
+</div>
+
+<form th:action="@{/create-class-lessons}"th:object="${request}"method="post">
+
+    <div class="form-block">
+        <label>Lesson name:</label>
+        <input type="text"th:field="*{lessonDTO.name}"placeholder="Введите название урока"required>
+    </div>
+
+    <div class="form-block">
+        <label>Number class:</label>
+        <input type="number" id="classNumber">
+        <label>Category:</label>
+        <input type="text" id="classCategory">
+        <button type="button" onclick="addClass()">Добавить в список</button>
+    </div>
+    <table id="classesTable">
+        <thead>
+        <tr>
+            <th>Number</th>
+            <th>Category</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="hiddenInputs"></div>
+
+    <br>
+
+    <button type="submit">Save all</button>
+</form>
+
+<!-- ===== JS ===== -->
+<script>
+    let index = 0;
+
+    function addClass() {
+        const number = document.getElementById("classNumber").value;
+        const category = document.getElementById("classCategory").value;
+
+        if (!number || !category) {
+            alert("Write number and category");
+            return;
+        }
+
+        const table = document.getElementById("classesTable")
+            .getElementsByTagName("tbody")[0];
+
+        const row = table.insertRow();
+
+        row.insertCell(0).innerText = number;
+        row.insertCell(1).innerText = category;
+
+        const deleteCell = row.insertCell(2);
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "X";
+        deleteBtn.type = "button";
+
+        deleteBtn.onclick = function () {
+            row.remove();
+            document.getElementById("input-number-" + index).remove();
+            document.getElementById("input-category-" + index).remove();
+        };
+
+        deleteCell.appendChild(deleteBtn);
+
+        // Hidden inputs для Spring binding
+        const hiddenDiv = document.getElementById("hiddenInputs");
+
+        const inputNumber = document.createElement("input");
+        inputNumber.type = "hidden";
+        inputNumber.name = "schoolClassDTOS[" + index + "].number";
+        inputNumber.value = number;
+        inputNumber.id = "input-number-" + index;
+
+        const inputCategory = document.createElement("input");
+        inputCategory.type = "hidden";
+        inputCategory.name = "schoolClassDTOS[" + index + "].category";
+        inputCategory.value = category;
+        inputCategory.id = "input-category-" + index;
+
+        hiddenDiv.appendChild(inputNumber);
+        hiddenDiv.appendChild(inputCategory);
+
+        index++;
+        document.getElementById("classNumber").value = "";
+        document.getElementById("classCategory").value = "";
+    }
+</script>
+
+</body>
+</html>

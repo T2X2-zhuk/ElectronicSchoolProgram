@@ -27,3 +27,6 @@ api:
   server:
     url: http://localhost:8092
 # Enter to OpenDocs = http://localhost:8092/swagger-ui/index.html
+schoolStudent:
+  getSchoolClassIds:
+      url: http://school-student-app:8080/school/student/api/getSchoolClassIds

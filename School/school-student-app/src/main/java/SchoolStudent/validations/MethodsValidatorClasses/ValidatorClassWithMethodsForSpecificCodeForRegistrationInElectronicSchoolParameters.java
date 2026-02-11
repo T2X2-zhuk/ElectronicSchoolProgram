@@ -1,7 +1,6 @@
 package SchoolStudent.validations.MethodsValidatorClasses;
 
 import SchoolStudent.jpa.repositories.CodeForRegistrationRepository;
-import SchoolStudent.util.ValidationError;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -19,19 +18,19 @@ public class ValidatorClassWithMethodsForSpecificCodeForRegistrationInElectronic
 
     public Optional<ValidationError> mustNotBeEmptySpecialCode(String specificCodeForRegistration) {
         return (isNullOrBlankOrEmpty(specificCodeForRegistration))
-                ? Optional.of(errorFactory.buildError("ERROR_CODE_15"))
+                ? Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_15"))
                 : Optional.empty();
     }
 
     public Optional<ValidationError> validateSpecificCodeForStudent(String specificCodeForRegistration) {
         return (code.findBySpecificCodeForRegistrationForStudent(specificCodeForRegistration).isEmpty())
-                ? Optional.of(errorFactory.buildError("ERROR_CODE_16"))
+                ? Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_16"))
                 : Optional.empty();
     }
 
     public Optional<ValidationError> validateSpecificCodeForTeacher(String specificCodeForRegistration) {
         return (code.findBySpecificCodeForRegistrationForTeacher(specificCodeForRegistration).isEmpty())
-                ? Optional.of(errorFactory.buildError("ERROR_CODE_19"))
+                ? Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_19"))
                 : Optional.empty();
     }
 

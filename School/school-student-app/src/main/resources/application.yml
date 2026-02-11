@@ -30,6 +30,6 @@ api:
 student:
   lessonsAndCertificates:
     getLessonName:
-      url: http://lessons-and-certificates-container:8080/lessonsAndCertificates/getLessonName
+      url: http://school-lessons-and-certificates:8080/lessonsAndCertificates/getLessonName
     deleteStudentsByStudentIds:
-      url: http://lessons-and-certificates-container:8080/lessonsAndCertificates/deleteStudentsByStudentIds
+      url: http://school-lessons-and-certificates:8080/lessonsAndCertificates/deleteStudentsByStudentIds

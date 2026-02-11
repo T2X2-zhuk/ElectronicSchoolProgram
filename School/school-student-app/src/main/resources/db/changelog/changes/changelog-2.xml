@@ -6,14 +6,14 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
 
     <changeSet id="5" author="Tarasov">
-        <createTable tableName="specific_code_for_registration_in_school">
+        <createTable tableName="specificCodeForRegistrationInSchool">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="specific_code_for_registration_for_student" type="VARCHAR(200)">
+            <column name="specificCodeForRegistrationForStudent" type="VARCHAR(200)">
                 <constraints nullable="false"/>
             </column>
-            <column name="specific_code_for_registration_for_teacher" type="VARCHAR(200)">
+            <column name="specificCodeForRegistrationForTeacher" type="VARCHAR(200)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -21,15 +21,15 @@
 
     <changeSet author="Tarasov" id="6">
         <createIndex indexName="ix_specificCodeForRegistrationForStudent"
-                     tableName="specific_code_for_registration_in_school"
+                     tableName="specificCodeForRegistrationInSchool"
                      unique="true">
-            <column name="specific_code_for_registration_for_student"/>
+            <column name="specificCodeForRegistrationForStudent"/>
         </createIndex>
 
         <createIndex indexName="ix_specificCodeForRegistrationForTeacher"
-                     tableName="specific_code_for_registration_in_school"
+                     tableName="specificCodeForRegistrationInSchool"
                      unique="true">
-            <column name="specific_code_for_registration_for_teacher"/>
+            <column name="specificCodeForRegistrationForTeacher"/>
         </createIndex>
     </changeSet>
 

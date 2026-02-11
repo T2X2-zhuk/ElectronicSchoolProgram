@@ -7,7 +7,7 @@
 
     <changeSet id="7" author="Tarasov">
         <sql>
-                INSERT INTO specific_code_for_registration_in_school(specific_code_for_registration_for_student, specific_code_for_registration_for_teacher)
+                INSERT INTO specificCodeForRegistrationInSchool(specificCodeForRegistrationForStudent, specificCodeForRegistrationForTeacher)
                     VALUES('StudentPassword33324', 'TeacherPassword12364');
         </sql>
     </changeSet>

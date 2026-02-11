@@ -1,8 +1,8 @@
 package SchoolLessonsAndCertificates.services;
 
 import SchoolLessonsAndCertificates.jpa.database.CertificateRepository;
-import SchoolLessonsAndCertificates.restAPI.controllers.fromOtherMicroservicesRequest.DeleteStudentsAndTheirCertificatesRequest;
-import SchoolLessonsAndCertificates.restAPI.controllers.fromOtherMicroservicesResponse.DeleteStudentsAndTheirCertificatesResponse;
+import SchoolLessonsAndCertificates.restAPI.microservice.schoolStudent.request.DeleteStudentsAndTheirCertificatesRequest;
+import SchoolLessonsAndCertificates.restAPI.microservice.schoolStudent.response.DeleteStudentsAndTheirCertificatesResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

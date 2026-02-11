@@ -2,10 +2,10 @@ package SchoolLessonsAndCertificates.services;
 
 import SchoolLessonsAndCertificates.jpa.database.LessonRepository;
 import SchoolLessonsAndCertificates.jpa.domain.Lesson;
-import SchoolLessonsAndCertificates.restAPI.controllers.fromOtherMicroservicesRequest.GetLessonNameRequest;
-import SchoolLessonsAndCertificates.restAPI.controllers.fromOtherMicroservicesResponse.GetLessonNameResponse;
+import SchoolLessonsAndCertificates.restAPI.microservice.schoolStudent.request.GetLessonNameRequest;
+import SchoolLessonsAndCertificates.restAPI.microservice.schoolStudent.response.GetLessonNameResponse;
 import SchoolLessonsAndCertificates.util.ValidationError;
-import SchoolLessonsAndCertificates.validators.GetLessonNameValidator;
+import SchoolLessonsAndCertificates.validators.lesson.GetLessonNameValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1,0 +1,49 @@
+package SchoolLessonsAndCertificates.services;
+
+import SchoolLessonsAndCertificates.jpa.database.ClassLessonRepository;
+import SchoolLessonsAndCertificates.jpa.database.LessonRepository;
+import SchoolLessonsAndCertificates.jpa.domain.ClassLesson;
+import SchoolLessonsAndCertificates.jpa.domain.Lesson;
+import SchoolLessonsAndCertificates.request.CreateClassLessonsRequest;
+import SchoolLessonsAndCertificates.response.CreateClassLessonsResponse;
+import SchoolLessonsAndCertificates.util.ValidationError;
+import SchoolLessonsAndCertificates.validators.classLesson.CreateClassLessonsValidator;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class CreateClassLessonsService {
+
+    private final CreateClassLessonsValidator validator;
+    private final LessonRepository lessonRepository;
+    private final ClassLessonRepository classLessonRepository;
+
+    @Transactional
+    public CreateClassLessonsResponse execute(CreateClassLessonsRequest request){
+
+        List<ValidationError> errors = validator.validate(request);
+        if (!errors.isEmpty()){
+            return CreateClassLessonsResponse.builder().errors(errors).build();
+        }
+        Lesson lesson = lessonRepository
+                .findByName(request.getLessonDTO().getName()).get();
+        List<Long> classIds = request.getSchoolClassIds();
+        List<ClassLesson> classLessons = classIds.stream()
+                .map(classId -> ClassLesson.builder()
+                        .schoolClassId(classId)
+                        .lesson(lesson)
+                        .build()
+                )
+                .toList();
+        classLessonRepository.saveAll(classLessons);
+        return CreateClassLessonsResponse.builder()
+                .message("Class lessons successfully created.")
+                .build();
+    }
+}
