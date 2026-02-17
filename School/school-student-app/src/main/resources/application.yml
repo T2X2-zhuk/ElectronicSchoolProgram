@@ -29,8 +29,8 @@ api:
 # Enter to OpenDocs = http://localhost:8093/swagger-ui/index.html
 lessonsAndCertificates:
   getLessonName:
-    url: http://school-lessons-and-certificates:8080/lessonsAndCertificates/getLessonName
+    url: http://school-lessons-and-certificates:8092/lessonsAndCertificates/getLessonName
   deleteStudentCertificates:
-    url: http://school-lessons-and-certificates:8080/lessonsAndCertificates/deleteStudentCertificates
+    url: http://school-lessons-and-certificates:8092/lessonsAndCertificates/deleteStudentCertificates
   createCertificates:
-    url: http://school-lessons-and-certificates:8080/lessonsAndCertificates/createCertificates
+    url: http://school-lessons-and-certificates:8092/lessonsAndCertificates/createCertificates

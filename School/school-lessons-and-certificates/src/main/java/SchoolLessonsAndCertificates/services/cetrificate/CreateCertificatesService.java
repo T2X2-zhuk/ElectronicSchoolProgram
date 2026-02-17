@@ -1,9 +1,9 @@
-package SchoolLessonsAndCertificates.services;
+package SchoolLessonsAndCertificates.services.cetrificate;
 
 import SchoolLessonsAndCertificates.jpa.database.CertificateRepository;
 import SchoolLessonsAndCertificates.jpa.database.ClassLessonRepository;
 import SchoolLessonsAndCertificates.jpa.domain.Certificate;
-import SchoolLessonsAndCertificates.request.CreateCertificatesRequest;
+import SchoolLessonsAndCertificates.request.certificate.CreateCertificatesRequest;
 import SchoolLessonsAndCertificates.response.CreateCertificatesResponse;
 import SchoolLessonsAndCertificates.util.ValidationError;
 import SchoolLessonsAndCertificates.validators.certificate.CreateCertificatesValidator;

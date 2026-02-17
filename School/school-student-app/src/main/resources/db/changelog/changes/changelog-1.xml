@@ -20,14 +20,14 @@
     </changeSet>
 
     <changeSet id="2" author="Tarasov">
-        <createTable tableName="schoolStudents">
+        <createTable tableName="school_students">
             <column autoIncrement="true" name="id" type="BIGINT">
             <constraints primaryKey="true" />
             </column>
-            <column name="firstName" type="VARCHAR(100)">
+            <column name="first_name" type="VARCHAR(100)">
                 <constraints nullable="true"/>
             </column>
-            <column name="lastName" type="VARCHAR(100)">
+            <column name="last_name" type="VARCHAR(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="fatherland" type="VARCHAR(100)">
@@ -47,22 +47,22 @@
 
     <changeSet author="Tarasov" id="3">
         <createIndex indexName="ix_email"
-                     tableName="schoolStudents"
+                     tableName="school_students"
                      unique="true">
             <column name="email"/>
         </createIndex>
 
         <createIndex indexName="ix_password"
-                     tableName="schoolStudents"
+                     tableName="school_students"
                      unique="true">
             <column name="password"/>
         </createIndex>
     </changeSet>
 
     <changeSet author="Tarasov" id="4">
-        <addForeignKeyConstraint baseTableName="schoolStudents"
+        <addForeignKeyConstraint baseTableName="school_students"
                                  baseColumnNames="classes_id"
-                                 constraintName="fk_schoolStudents_classes_id"
+                                 constraintName="fk_school_students_classes_id"
                                  referencedTableName="classes"
                                  referencedColumnNames="id"/>
     </changeSet>

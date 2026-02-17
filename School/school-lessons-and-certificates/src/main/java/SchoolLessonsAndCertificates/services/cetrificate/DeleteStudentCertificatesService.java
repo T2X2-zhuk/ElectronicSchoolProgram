@@ -1,7 +1,7 @@
-package SchoolLessonsAndCertificates.services;
+package SchoolLessonsAndCertificates.services.cetrificate;
 
 import SchoolLessonsAndCertificates.jpa.database.CertificateRepository;
-import SchoolLessonsAndCertificates.request.DeleteStudentCertificatesRequest;
+import SchoolLessonsAndCertificates.request.certificate.DeleteStudentCertificatesRequest;
 import SchoolLessonsAndCertificates.response.DeleteStudentCertificatesResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

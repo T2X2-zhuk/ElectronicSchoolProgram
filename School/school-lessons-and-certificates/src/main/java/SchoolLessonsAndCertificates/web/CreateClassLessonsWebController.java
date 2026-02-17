@@ -1,8 +1,8 @@
 package SchoolLessonsAndCertificates.web;
 
-import SchoolLessonsAndCertificates.request.CreateClassLessonsRequest;
+import SchoolLessonsAndCertificates.request.classLesson.CreateClassLessonsRequest;
 import SchoolLessonsAndCertificates.response.CreateClassLessonsResponse;
-import SchoolLessonsAndCertificates.services.CreateClassLessonsService;
+import SchoolLessonsAndCertificates.services.classLesson.CreateClassLessonsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

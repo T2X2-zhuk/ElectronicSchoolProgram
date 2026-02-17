@@ -1,4 +1,4 @@
-package SchoolLessonsAndCertificates.request;
+package SchoolLessonsAndCertificates.request.classLesson;
 
 import SchoolLessonsAndCertificates.jpa.dto.LessonDTO;
 import SchoolLessonsAndCertificates.jpa.dto.SchoolClassDTO;

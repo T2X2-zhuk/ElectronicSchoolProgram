@@ -1,9 +1,9 @@
 package SchoolLessonsAndCertificates.restAPI.controllers;
 
 
-import SchoolLessonsAndCertificates.request.DeleteStudentCertificatesRequest;
+import SchoolLessonsAndCertificates.request.certificate.DeleteStudentCertificatesRequest;
 import SchoolLessonsAndCertificates.response.DeleteStudentCertificatesResponse;
-import SchoolLessonsAndCertificates.services.DeleteStudentCertificatesService;
+import SchoolLessonsAndCertificates.services.cetrificate.DeleteStudentCertificatesService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;

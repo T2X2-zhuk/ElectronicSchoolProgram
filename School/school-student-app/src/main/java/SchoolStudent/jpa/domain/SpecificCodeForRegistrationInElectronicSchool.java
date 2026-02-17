@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "specificCodeForRegistrationInSchool")
+@Table(name = "specific_code_for_registration_in_school")
 @Getter
 @Setter
 @ToString
@@ -18,9 +18,9 @@ public class SpecificCodeForRegistrationInElectronicSchool {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "specificCodeForRegistrationForStudent",nullable = false)
+    @Column(name = "specific_code_for_registration_for_student",nullable = false)
     private String specificCodeForRegistrationForStudent;
 
-    @Column(name = "specificCodeForRegistrationForTeacher",nullable = false)
+    @Column(name = "specific_code_for_registration_for_teacher",nullable = false)
     private String specificCodeForRegistrationForTeacher;
 }

@@ -1,6 +1,6 @@
 package SchoolLessonsAndCertificates.validators.classLesson;
 
-import SchoolLessonsAndCertificates.request.CreateClassLessonsRequest;
+import SchoolLessonsAndCertificates.request.classLesson.CreateClassLessonsRequest;
 import SchoolLessonsAndCertificates.restAPI.microservice.schoolStudent.controllers.GetSchoolClassIdsRestController;
 import SchoolLessonsAndCertificates.restAPI.microservice.schoolStudent.request.GetSchoolClassIdsRequest;
 import SchoolLessonsAndCertificates.restAPI.microservice.schoolStudent.response.GetSchoolClassIdsResponse;

@@ -1,8 +1,8 @@
 package SchoolLessonsAndCertificates.restAPI.controllers;
 
-import SchoolLessonsAndCertificates.request.CreateCertificatesRequest;
+import SchoolLessonsAndCertificates.request.certificate.CreateCertificatesRequest;
 import SchoolLessonsAndCertificates.response.CreateCertificatesResponse;
-import SchoolLessonsAndCertificates.services.CreateCertificatesService;
+import SchoolLessonsAndCertificates.services.cetrificate.CreateCertificatesService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;

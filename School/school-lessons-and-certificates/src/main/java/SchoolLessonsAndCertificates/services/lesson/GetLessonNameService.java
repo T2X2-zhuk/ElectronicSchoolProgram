@@ -1,8 +1,8 @@
-package SchoolLessonsAndCertificates.services;
+package SchoolLessonsAndCertificates.services.lesson;
 
 import SchoolLessonsAndCertificates.jpa.database.LessonRepository;
 import SchoolLessonsAndCertificates.jpa.domain.Lesson;
-import SchoolLessonsAndCertificates.request.GetLessonNameRequest;
+import SchoolLessonsAndCertificates.request.lesson.GetLessonNameRequest;
 import SchoolLessonsAndCertificates.response.GetLessonNameResponse;
 import SchoolLessonsAndCertificates.util.ValidationError;
 import SchoolLessonsAndCertificates.validators.lesson.GetLessonNameValidator;

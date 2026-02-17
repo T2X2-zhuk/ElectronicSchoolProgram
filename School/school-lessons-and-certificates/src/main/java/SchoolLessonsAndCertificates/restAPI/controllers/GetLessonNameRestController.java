@@ -1,8 +1,8 @@
 package SchoolLessonsAndCertificates.restAPI.controllers;
 
-import SchoolLessonsAndCertificates.request.GetLessonNameRequest;
+import SchoolLessonsAndCertificates.request.lesson.GetLessonNameRequest;
 import SchoolLessonsAndCertificates.response.GetLessonNameResponse;
-import SchoolLessonsAndCertificates.services.GetLessonNameService;
+import SchoolLessonsAndCertificates.services.lesson.GetLessonNameService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;

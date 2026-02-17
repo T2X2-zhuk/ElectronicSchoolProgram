@@ -1,4 +1,4 @@
-package SchoolLessonsAndCertificates.request;
+package SchoolLessonsAndCertificates.request.certificate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

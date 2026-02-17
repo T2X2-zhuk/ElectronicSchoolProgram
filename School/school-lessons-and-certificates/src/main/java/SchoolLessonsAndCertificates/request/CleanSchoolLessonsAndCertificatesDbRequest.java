@@ -9,7 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetLessonNameRequest {
+public class CleanSchoolLessonsAndCertificatesDbRequest {
 
-    private String lessonName;
+    private boolean cleanCertificateDb;
+    private boolean cleanClassLessonDb;
+    private boolean cleanLessonDb;
+
 }

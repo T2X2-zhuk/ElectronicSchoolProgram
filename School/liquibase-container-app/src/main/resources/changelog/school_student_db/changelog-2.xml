@@ -6,30 +6,30 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
 
     <changeSet id="5" author="Tarasov">
-        <createTable tableName="specificCodeForRegistrationInSchool">
+        <createTable tableName="specific_code_for_registration_in_school">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="specificCodeForRegistrationForStudent" type="VARCHAR(200)">
+            <column name="specific_code_for_registration_for_student" type="VARCHAR(200)">
                 <constraints nullable="false"/>
             </column>
-            <column name="specificCodeForRegistrationForTeacher" type="VARCHAR(200)">
+            <column name="specific_code_for_registration_for_teacher" type="VARCHAR(200)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
 
     <changeSet author="Tarasov" id="6">
-        <createIndex indexName="ix_specificCodeForRegistrationForStudent"
-                     tableName="specificCodeForRegistrationInSchool"
+        <createIndex indexName="ix_specific_code_for_registration_for_student"
+                     tableName="specific_code_for_registration_in_school"
                      unique="true">
-            <column name="specificCodeForRegistrationForStudent"/>
+            <column name="specific_code_for_registration_for_student"/>
         </createIndex>
 
-        <createIndex indexName="ix_specificCodeForRegistrationForTeacher"
-                     tableName="specificCodeForRegistrationInSchool"
+        <createIndex indexName="ix_specific_code_for_registration_for_teacher"
+                     tableName="specific_code_for_registration_in_school"
                      unique="true">
-            <column name="specificCodeForRegistrationForTeacher"/>
+            <column name="specific_code_for_registration_for_teacher"/>
         </createIndex>
     </changeSet>
 

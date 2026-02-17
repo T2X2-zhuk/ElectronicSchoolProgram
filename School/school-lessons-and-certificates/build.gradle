@@ -84,8 +84,9 @@ dockerPrepare {
     dependsOn bootJar
 }
 docker {
+    dependsOn bootJar
     name "lessons-and-certificates:1.0.1"
-    files 'build/libs/lessons-and-certificates-1.0.1.jar'
+    files "build/libs/lessons-and-certificates-1.0.1.jar"
     buildArgs(['JAR_FILE': "lessons-and-certificates-1.0.1.jar"])
 }
 test {

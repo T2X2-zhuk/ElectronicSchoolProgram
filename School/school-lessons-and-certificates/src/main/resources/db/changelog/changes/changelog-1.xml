@@ -50,10 +50,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="student_id" type="BIGINT">
-                <constraints nullable="false"
-                             foreignKeyName="fk_certificates_student"
-                             referencedTableName="students"
-                             referencedColumnNames="id"/>
+                <constraints nullable="false"/>
             </column>
             <column name="class_lessons_id" type="BIGINT">
                 <constraints nullable="false"

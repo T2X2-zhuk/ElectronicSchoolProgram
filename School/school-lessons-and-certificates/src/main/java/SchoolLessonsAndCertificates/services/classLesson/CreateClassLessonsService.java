@@ -1,10 +1,10 @@
-package SchoolLessonsAndCertificates.services;
+package SchoolLessonsAndCertificates.services.classLesson;
 
 import SchoolLessonsAndCertificates.jpa.database.ClassLessonRepository;
 import SchoolLessonsAndCertificates.jpa.database.LessonRepository;
 import SchoolLessonsAndCertificates.jpa.domain.ClassLesson;
 import SchoolLessonsAndCertificates.jpa.domain.Lesson;
-import SchoolLessonsAndCertificates.request.CreateClassLessonsRequest;
+import SchoolLessonsAndCertificates.request.classLesson.CreateClassLessonsRequest;
 import SchoolLessonsAndCertificates.response.CreateClassLessonsResponse;
 import SchoolLessonsAndCertificates.util.ValidationError;
 import SchoolLessonsAndCertificates.validators.classLesson.CreateClassLessonsValidator;

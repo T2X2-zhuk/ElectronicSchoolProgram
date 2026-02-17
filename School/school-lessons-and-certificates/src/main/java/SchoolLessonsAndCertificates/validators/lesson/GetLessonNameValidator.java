@@ -1,6 +1,6 @@
 package SchoolLessonsAndCertificates.validators.lesson;
 
-import SchoolLessonsAndCertificates.request.GetLessonNameRequest;
+import SchoolLessonsAndCertificates.request.lesson.GetLessonNameRequest;
 import SchoolLessonsAndCertificates.util.ValidationError;
 import SchoolLessonsAndCertificates.validators.MethodsValidatorClasses.ValidatorClassWithMethodsForLessonParameters;
 import lombok.RequiredArgsConstructor;

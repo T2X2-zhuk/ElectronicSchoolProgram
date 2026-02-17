@@ -1,10 +1,11 @@
 package SchoolLessonsAndCertificates.restAPI.controllers;
 
-import SchoolLessonsAndCertificates.request.classLesson.CreateClassLessonsRequest;
-import SchoolLessonsAndCertificates.response.CreateClassLessonsResponse;
-import SchoolLessonsAndCertificates.services.classLesson.CreateClassLessonsService;
+import SchoolLessonsAndCertificates.request.CleanSchoolLessonsAndCertificatesDbRequest;
+import SchoolLessonsAndCertificates.response.CleanSchoolLessonsAndCertificatesDbResponse;
+import SchoolLessonsAndCertificates.services.CleanDbService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/lessonsAndCertificates")
 @RequiredArgsConstructor
 @Slf4j
-public class CreateClassLessonsRestController {
+public class CleanDbRestController {
 
-    private final CreateClassLessonsService service;
+    private final CleanDbService service;
 
-    @PostMapping(path = "/createClassLessons",
+    @PostMapping(path = "/cleanDb",
             consumes = "application/json",
             produces = "application/json")
-    public CreateClassLessonsResponse execute(@RequestBody CreateClassLessonsRequest request) {
+    public CleanSchoolLessonsAndCertificatesDbResponse execute(@RequestBody CleanSchoolLessonsAndCertificatesDbRequest request) {
         return service.execute(request);
     }
 }
