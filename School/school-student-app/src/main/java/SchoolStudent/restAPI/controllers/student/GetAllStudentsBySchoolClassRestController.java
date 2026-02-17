@@ -22,7 +22,6 @@ public class GetAllStudentsBySchoolClassRestController {
             consumes = "application/json",
             produces = "application/json")
     public GetStudentsBySchoolClassResponse execute(@RequestBody GetStudentsBySchoolClassRequest request) {
-        GetStudentsBySchoolClassResponse response = service.execute(request);
-        return response;
+        return service.execute(request);
     }
 }

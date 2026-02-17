@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/school/student/api")
 @RequiredArgsConstructor
 @Slf4j
-public class TransferOfStudentToANewClassRestController {
+public class TransferStudentToANewClassRestController {
 
     private final TransferStudentToNewClassService service;
 
