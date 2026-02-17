@@ -36,7 +36,7 @@ public class RegistrationTeacherService {
 
     private Teacher buildTeacher(RegistrationTeacherRequest request){
         SchoolClass schoolClass = schoolClassRepository.findByNumberAndCategory(request.getTeacherDTO().getSchoolClassDTO().getNumber(),
-                request.getTeacherDTO().getSchoolClassDTO().getCategory()).get();
+                request.getTeacherDTO().getSchoolClassDTO().getCategory()).orElseThrow();
         return Teacher.builder()
                 .firstName(request.getTeacherDTO().getFirstName())
                 .lastName(request.getTeacherDTO().getLastName())

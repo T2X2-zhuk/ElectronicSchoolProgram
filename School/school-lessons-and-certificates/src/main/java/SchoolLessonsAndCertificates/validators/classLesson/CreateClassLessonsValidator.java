@@ -1,7 +1,7 @@
 package SchoolLessonsAndCertificates.validators.classLesson;
 
 import SchoolLessonsAndCertificates.request.CreateClassLessonsRequest;
-import SchoolLessonsAndCertificates.restAPI.microservice.schoolStudent.controllers.SchoolStudentMicroserviceGetSchoolClassIds;
+import SchoolLessonsAndCertificates.restAPI.microservice.schoolStudent.controllers.GetSchoolClassIdsRestController;
 import SchoolLessonsAndCertificates.restAPI.microservice.schoolStudent.request.GetSchoolClassIdsRequest;
 import SchoolLessonsAndCertificates.restAPI.microservice.schoolStudent.response.GetSchoolClassIdsResponse;
 import SchoolLessonsAndCertificates.util.ValidationError;
@@ -20,7 +20,7 @@ import java.util.List;
 public class CreateClassLessonsValidator {
 
     private final ValidatorClassWithMethodsForLessonParameters validatorClassWithMethodsForLesson;
-    private final SchoolStudentMicroserviceGetSchoolClassIds microserviceGetStudentsIds;
+    private final GetSchoolClassIdsRestController microserviceGetStudentsIds;
     private final ValidatorClassWithMethodsForClassLessonParameters validatorClassWithMethodsForClassLessonParameters;
 
     public List<ValidationError> validate(CreateClassLessonsRequest request){
@@ -36,10 +36,13 @@ public class CreateClassLessonsValidator {
 
     private void sendDTOsToMicroservice(CreateClassLessonsRequest request, List<ValidationError> errors) {
         if (errors.isEmpty()){
-            GetSchoolClassIdsResponse response = microserviceGetStudentsIds.execute(GetSchoolClassIdsRequest.builder().schoolClassDTOS(request.getSchoolClassDTOS()).build());
-            validatorClassWithMethodsForClassLessonParameters.validateListSchoolClassIds(response.getStudentsIds()).ifPresent(errors ::add);
+            GetSchoolClassIdsResponse response = microserviceGetStudentsIds.execute(
+                    GetSchoolClassIdsRequest.builder()
+                            .schoolClassDTOS(request.getSchoolClassDTOS()).build());
             if (errors.isEmpty()){
                 request.setSchoolClassIds(response.getStudentsIds());
+            }else {
+                errors.addAll(response.getErrors());
             }
         }
     }

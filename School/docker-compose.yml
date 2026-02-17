@@ -36,6 +36,16 @@ services:
       start_period: 30s
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
+  liquibase-container-app:
+    networks: [danil-reward-project]
+    container_name: liquibase-container-app
+    image: liquibase-container-app:1.0.1
+    depends_on:
+      school-student-app-db:
+        condition: service_healthy
+      school-lessons-and-certificates-db:
+        condition: service_healthy
+
   school-student-app:
     networks: [danil-net-electronic-school]
     container_name: school-student-app

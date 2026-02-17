@@ -23,7 +23,7 @@ public class ValidatorClassWithMethodsForLessonParameters {
     }
 
     public Optional<ValidationError> isLessonInDatabaseError(String subjectName) {
-        return (lessonRepository.findByName(subjectName).isEmpty())
+        return (!lessonRepository.existsByName(subjectName))
                 ? Optional.of(errorFactory.buildError("LESSONS_AND_CERTIFICATES_ERROR_CODE_1"))
                 : Optional.empty();
     }

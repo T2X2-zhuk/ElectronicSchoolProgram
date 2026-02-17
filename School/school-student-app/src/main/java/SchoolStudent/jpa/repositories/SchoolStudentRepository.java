@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,13 +22,13 @@ public interface SchoolStudentRepository extends JpaRepository<SchoolStudent,Lon
     Optional<SchoolStudent> findByEmail(String email);
     Optional<SchoolStudent> findByPassword(String password);
 
+    boolean existsByPassword(String password);
+
     @Modifying
-    @Transactional
     @Query("DELETE FROM SchoolStudent st WHERE st.email = :email")
     void deleteByEmail(@Param("email") String email);
 
     @Modifying
-    @Transactional
     @Query("""
    UPDATE SchoolStudent st
    SET st.schoolClass = :newClass

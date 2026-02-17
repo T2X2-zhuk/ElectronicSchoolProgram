@@ -29,21 +29,20 @@ public class LoginStudentService {
         if (!errors.isEmpty()) {
             return LoginStudentResponse.builder().errors(errors).build();
         }
-        return getSchoolStudent(request);
+        return LoginStudentResponse.builder().schoolStudentDTO(getSchoolStudent(request)).build();
     }
 
-    private LoginStudentResponse getSchoolStudent(LoginStudentRequest request) {
-        SchoolStudent schoolStudent = repository.findByPassword(request.getPassword()).get();
+    private SchoolStudentDTO getSchoolStudent(LoginStudentRequest request) {
+        SchoolStudent schoolStudent = repository.findByPassword(request.getPassword()).orElseThrow();
         SchoolClassDTO schoolClassDTO = SchoolClassDTO.builder()
                 .number(schoolStudent.getSchoolClass().getNumber())
                 .category(schoolStudent.getSchoolClass().getCategory()).build();
-        SchoolStudentDTO schoolStudentDTO = SchoolStudentDTO.builder()
+        return SchoolStudentDTO.builder()
                 .firstName(schoolStudent.getFirstName())
                 .lastName(schoolStudent.getLastName())
                 .fatherland(schoolStudent.getFatherland())
                 .email(schoolStudent.getEmail())
                 .password(schoolStudent.getPassword())
                 .schoolClassDTO(schoolClassDTO).build();
-        return LoginStudentResponse.builder().schoolStudentDTO(schoolStudentDTO).build();
     }
 }

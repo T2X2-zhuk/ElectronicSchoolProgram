@@ -1,0 +1,21 @@
+liquibase:
+  school_student_db:
+    url: jdbc:mysql://school-student-app-db:3306/school_student_db
+    user: root
+    password: fkmdbyjdbx383
+    change-log: classpath:changelog/school_student_db/changelog-master.xml
+
+  lessons_and_certificates_db:
+    url: jdbc:mysql://school-lessons-and-certificates-db:3306/lessons_and_certificates_db
+    user: root
+    password: fkmdbyjdbx383
+    change-log: classpath:changelog/lessons_and_certificates_db/changelog-master.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always

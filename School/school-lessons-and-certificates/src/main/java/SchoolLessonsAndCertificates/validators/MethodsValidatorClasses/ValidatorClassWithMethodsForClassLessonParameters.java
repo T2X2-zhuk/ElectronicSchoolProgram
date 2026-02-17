@@ -24,9 +24,9 @@ public class ValidatorClassWithMethodsForClassLessonParameters {
                 : Optional.empty();
     }
 
-    public Optional<ValidationError> validateListSchoolClassIds(List<Long> schoolClassIds){
-        return (schoolClassIds.isEmpty())
-                ? Optional.of(errorFactory.buildError("LESSONS_AND_CERTIFICATES_ERROR_CODE_4"))
+    public Optional<ValidationError> validateFindClassLessonsBySchoolClassId(Long schoolClassId){
+        return (!classLessonRepository.existsBySchoolClassId(schoolClassId))
+                ? Optional.of(errorFactory.buildError("LESSONS_AND_CERTIFICATES_ERROR_CODE_5"))
                 : Optional.empty();
     }
 }

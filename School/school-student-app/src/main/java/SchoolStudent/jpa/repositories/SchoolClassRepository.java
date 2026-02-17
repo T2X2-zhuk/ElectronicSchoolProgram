@@ -11,4 +11,6 @@ public interface SchoolClassRepository extends JpaRepository<SchoolClass, Long> 
 
     @Query("SELECT sc FROM SchoolClass sc where sc.category = :category AND sc.number = :number")
     Optional<SchoolClass> findByNumberAndCategory(@Param("number") Long numberClass, @Param("category") String classCategory);
+
+    boolean existsByNumberAndCategory(Long number, String category);
 }

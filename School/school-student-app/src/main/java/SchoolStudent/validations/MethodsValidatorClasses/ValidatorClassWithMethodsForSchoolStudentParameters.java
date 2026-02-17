@@ -50,7 +50,7 @@ public class ValidatorClassWithMethodsForSchoolStudentParameters {
     }
 
     public Optional<ValidationError> suchStudentIsNotExists(String password) {
-        return (studentRepository.findByPassword(password).isEmpty())
+        return (!studentRepository.existsByPassword(password))
                 ? Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_18"))
                 : Optional.empty();
     }
@@ -71,7 +71,7 @@ public class ValidatorClassWithMethodsForSchoolStudentParameters {
     }
 
     public Optional<ValidationError> suchPasswordAlreadyExists(String password) {
-        return (studentRepository.findByPassword(password).isPresent())
+        return (studentRepository.existsByPassword(password))
                 ? Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_9"))
                 : Optional.empty();
     }

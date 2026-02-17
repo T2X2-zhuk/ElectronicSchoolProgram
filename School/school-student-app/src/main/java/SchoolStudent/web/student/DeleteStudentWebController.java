@@ -1,8 +1,8 @@
 package SchoolStudent.web.student;
 
-import SchoolStudent.request.student.DeleteStudentRequest;
-import SchoolStudent.response.student.DeleteStudentResponse;
-import SchoolStudent.services.schoolStudent.DeleteStudentService;
+import SchoolStudent.request.student.DeleteStudentsRequest;
+import SchoolStudent.response.student.DeleteStudentsResponse;
+import SchoolStudent.services.schoolStudent.DeleteStudentsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -19,12 +19,12 @@ import java.util.List;
 @Slf4j
 public class DeleteStudentWebController {
 
-    private final DeleteStudentService service;
+    private final DeleteStudentsService service;
 
     @GetMapping("delete-student")
     public String showForm(ModelMap modelMap) {
-        modelMap.addAttribute("request",  new DeleteStudentRequest());
-        modelMap.addAttribute("response", new DeleteStudentResponse());
+        modelMap.addAttribute("request",  new DeleteStudentsRequest());
+        modelMap.addAttribute("response", new DeleteStudentsResponse());
         return "delete-student";
     }
 
@@ -34,10 +34,10 @@ public class DeleteStudentWebController {
         List<String> stringList = Arrays.stream(emails.split(","))
                 .map(String::trim)
                 .toList();
-        DeleteStudentRequest request = DeleteStudentRequest.builder()
+        DeleteStudentsRequest request = DeleteStudentsRequest.builder()
                 .emails(stringList)
                 .build();
-        DeleteStudentResponse response = service.execute(request);
+        DeleteStudentsResponse response = service.execute(request);
         modelMap.addAttribute("request", request);
         modelMap.addAttribute("response", response);
         return "delete-student";

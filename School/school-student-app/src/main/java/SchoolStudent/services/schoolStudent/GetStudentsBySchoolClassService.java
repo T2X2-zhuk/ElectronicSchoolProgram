@@ -43,7 +43,7 @@ public class GetStudentsBySchoolClassService {
                         request.getSchoolClassDTO().getNumber(),
                         request.getSchoolClassDTO().getCategory()
                 );
-        SchoolClass schoolClass = schoolClassOpt.get();
+        SchoolClass schoolClass = schoolClassOpt.orElseThrow();
         List<SchoolStudent> schoolStudents =
                 repository.findAllBySchoolClass_Id(schoolClass.getId());
 

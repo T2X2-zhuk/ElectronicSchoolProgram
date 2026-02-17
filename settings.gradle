@@ -2,3 +2,5 @@ rootProject.name = 'ElectronicSchoolProgram'
 
 include('School:school-student-app')
 include('School:school-lessons-and-certificates')
+include('School:liquibase-container-app')
+include('School:school-acceptance-tests')

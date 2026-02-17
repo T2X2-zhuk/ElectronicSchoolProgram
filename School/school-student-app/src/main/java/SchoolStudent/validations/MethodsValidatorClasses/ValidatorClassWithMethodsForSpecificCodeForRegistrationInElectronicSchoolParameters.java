@@ -24,7 +24,7 @@ public class ValidatorClassWithMethodsForSpecificCodeForRegistrationInElectronic
 
     public Optional<ValidationError> validateSpecificCodeForStudent(String specificCodeForRegistration) {
         return (code.findBySpecificCodeForRegistrationForStudent(specificCodeForRegistration).isEmpty())
-                ? Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_16"))
+                ? Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_19"))
                 : Optional.empty();
     }
 

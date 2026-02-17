@@ -22,7 +22,6 @@ public class RegistrationStudentRestController {
             consumes = "application/json",
             produces = "application/json")
     public RegistrationStudentResponse execute(@RequestBody RegistrationStudentRequest request) {
-        RegistrationStudentResponse response = service.execute(request);
-        return response;
+        return service.execute(request);
     }
 }

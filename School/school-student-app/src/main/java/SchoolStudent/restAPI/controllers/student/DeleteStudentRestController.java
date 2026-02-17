@@ -1,8 +1,8 @@
 package SchoolStudent.restAPI.controllers.student;
 
-import SchoolStudent.request.student.DeleteStudentRequest;
-import SchoolStudent.response.student.DeleteStudentResponse;
-import SchoolStudent.services.schoolStudent.DeleteStudentService;
+import SchoolStudent.request.student.DeleteStudentsRequest;
+import SchoolStudent.response.student.DeleteStudentsResponse;
+import SchoolStudent.services.schoolStudent.DeleteStudentsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class DeleteStudentRestController {
 
-    private final DeleteStudentService service;
+    private final DeleteStudentsService service;
 
     @PostMapping(path = "/deleteStudent",
             consumes = "application/json",
             produces = "application/json")
-    public DeleteStudentResponse execute(@RequestBody DeleteStudentRequest request) {
+    public DeleteStudentsResponse execute(@RequestBody DeleteStudentsRequest request) {
         return service.execute(request);
     }
 }

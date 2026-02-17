@@ -23,6 +23,7 @@ springdoc:
 
 server:
   port: 8092
+
 api:
   server:
     url: http://localhost:8092

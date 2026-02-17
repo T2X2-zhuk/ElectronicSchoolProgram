@@ -26,15 +26,13 @@ public class CreateClassLessonsService {
 
     @Transactional
     public CreateClassLessonsResponse execute(CreateClassLessonsRequest request){
-
         List<ValidationError> errors = validator.validate(request);
         if (!errors.isEmpty()){
             return CreateClassLessonsResponse.builder().errors(errors).build();
         }
         Lesson lesson = lessonRepository
-                .findByName(request.getLessonDTO().getName()).get();
-        List<Long> classIds = request.getSchoolClassIds();
-        List<ClassLesson> classLessons = classIds.stream()
+                .findByName(request.getLessonDTO().getName()).orElseThrow();
+        List<ClassLesson> classLessons = request.getSchoolClassIds().stream()
                 .map(classId -> ClassLesson.builder()
                         .schoolClassId(classId)
                         .lesson(lesson)

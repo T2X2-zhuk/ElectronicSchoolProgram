@@ -7,6 +7,9 @@ import SchoolStudent.jpa.repositories.SchoolClassRepository;
 import SchoolStudent.jpa.repositories.SchoolStudentRepository;
 import SchoolStudent.request.student.RegistrationStudentRequest;
 import SchoolStudent.response.student.RegistrationStudentResponse;
+import SchoolStudent.restAPI.microservice.lessonsAndCertificates.controllers.CreateCertificatesRestController;
+import SchoolStudent.restAPI.microservice.lessonsAndCertificates.request.CreateCertificatesRequest;
+import SchoolStudent.restAPI.microservice.lessonsAndCertificates.response.CreateCertificatesResponse;
 import SchoolStudent.validations.MethodsValidatorClasses.ValidationError;
 import SchoolStudent.validations.student.RegistrationStudentValidator;
 import lombok.RequiredArgsConstructor;
@@ -24,32 +27,46 @@ public class RegistrationStudentService {
     private final SchoolStudentRepository repository;
     private final RegistrationStudentValidator validator;
     private final SchoolClassRepository repository2;
+    private final CreateCertificatesRestController microservice;
 
     @Transactional
-    public RegistrationStudentResponse execute(RegistrationStudentRequest request){
+    public RegistrationStudentResponse execute(RegistrationStudentRequest request) {
         List<ValidationError> validationErrors = validator.validationErrorsList(request);
-        if (!validationErrors.isEmpty()){
+        if (!validationErrors.isEmpty()) {
             return RegistrationStudentResponse.builder().errors(validationErrors).build();
-        }else {
-            SchoolClass schoolClass =
-                    repository2.findByNumberAndCategory(
-                            request.getSchoolStudentDTO()
-                                    .getSchoolClassDTO()
-                                    .getNumber(),
-                            request.getSchoolStudentDTO()
-                                    .getSchoolClassDTO()
-                                    .getCategory()
-                    ).orElseThrow();
-            repository.save(buildSchoolStudent(request,schoolClass));
+        }
+        SchoolClass schoolClass =
+                getSchoolClass(request);
+        Long studentId = repository.save(buildSchoolStudent(request, schoolClass)).getId();
+        CreateCertificatesResponse response = sendToMicroservice(studentId, schoolClass);
+        if (response.hasErrors()){
+            repository.deleteById(studentId);
+            return RegistrationStudentResponse.builder().errors(response.getErrors()).build();
         }
         return RegistrationStudentResponse
                 .builder()
-                .message("Student successfully registered.")
+                .message("Student successfully registered. " + response.getMessage())
                 .build();
     }
 
-    private SchoolStudent buildSchoolStudent(RegistrationStudentRequest request,SchoolClass schoolClass){
+    private CreateCertificatesResponse sendToMicroservice(Long studentId, SchoolClass schoolClass) {
+        return microservice.execute(CreateCertificatesRequest.builder().
+                studentId(studentId).
+                schoolClassId(schoolClass.getId()).build());
+    }
 
+    private SchoolClass getSchoolClass(RegistrationStudentRequest request) {
+        return repository2.findByNumberAndCategory(
+                request.getSchoolStudentDTO()
+                        .getSchoolClassDTO()
+                        .getNumber(),
+                request.getSchoolStudentDTO()
+                        .getSchoolClassDTO()
+                        .getCategory()
+        ).orElseThrow();
+    }
+
+    private SchoolStudent buildSchoolStudent(RegistrationStudentRequest request,SchoolClass schoolClass){
         SchoolStudentDTO dto = request.getSchoolStudentDTO();
         return SchoolStudent.builder()
                 .firstName(dto.getFirstName())

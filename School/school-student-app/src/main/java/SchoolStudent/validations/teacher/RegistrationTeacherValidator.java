@@ -1,9 +1,9 @@
 package SchoolStudent.validations.teacher;
 
 import SchoolStudent.request.teacher.RegistrationTeacherRequest;
-import SchoolStudent.restAPI.microservice.lessonsAndCertificates.controllers.LessonsAndCertificatesMicroserviceGetLessonName;
-import SchoolStudent.restAPI.microservice.lessonsAndCertificates.request.GetLessonNameSchoolLessonsAndCertificatesMicroserviceRequest;
-import SchoolStudent.restAPI.microservice.lessonsAndCertificates.response.GetLessonNameSchoolLessonsAndCertificatesMicroserviceResponse;
+import SchoolStudent.restAPI.microservice.lessonsAndCertificates.controllers.GetLessonNameRestController;
+import SchoolStudent.restAPI.microservice.lessonsAndCertificates.request.GetLessonNameRequest;
+import SchoolStudent.restAPI.microservice.lessonsAndCertificates.response.GetLessonNameResponse;
 import SchoolStudent.validations.MethodsValidatorClasses.ValidationError;
 import SchoolStudent.validations.MethodsValidatorClasses.ValidatorClassWithMethodsForSchoolClassParameters;
 import SchoolStudent.validations.MethodsValidatorClasses.ValidatorClassWithMethodsForSpecificCodeForRegistrationInElectronicSchoolParameters;
@@ -23,7 +23,7 @@ public class RegistrationTeacherValidator {
     private final ValidatorClassWithMethodsForTeacherParameters validatorClassWithMethodsForTeacherParameters;
     private final ValidatorClassWithMethodsForSchoolClassParameters validatorClassWithMethodsForSchoolClassParameters;
     private final ValidatorClassWithMethodsForSpecificCodeForRegistrationInElectronicSchoolParameters validatorClassWithMethodsForSpecificCodeForRegistrationInElectronicSchoolParameters;
-    private final LessonsAndCertificatesMicroserviceGetLessonName microserviceServiceGetLessonName;
+    private final GetLessonNameRestController microserviceServiceGetLessonName;
 
     public List<ValidationError> validate(RegistrationTeacherRequest request) {
         List<ValidationError> errorDTOS = new ArrayList<>();
@@ -46,8 +46,8 @@ public class RegistrationTeacherValidator {
     }
 
     private void sendRequestToMicroservice(List<ValidationError> errorDTOS, RegistrationTeacherRequest request) {
-        GetLessonNameSchoolLessonsAndCertificatesMicroserviceResponse response =
-                microserviceServiceGetLessonName.execute(GetLessonNameSchoolLessonsAndCertificatesMicroserviceRequest.builder()
+        GetLessonNameResponse response =
+                microserviceServiceGetLessonName.execute(GetLessonNameRequest.builder()
                         .lessonName(request.getTeacherDTO().getSubject()).build());
         if (response.hasErrors()){
            errorDTOS.addAll(response.getErrors());

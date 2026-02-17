@@ -6,12 +6,13 @@
       <GradleProjectSettings>
         <option name="delegatedBuild" value="false" />
         <option name="testRunner" value="PLATFORM" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/School" />
+            <option value="$PROJECT_DIR$/School/liquibase-container-app" />
+            <option value="$PROJECT_DIR$/School/school-acceptance-tests" />
             <option value="$PROJECT_DIR$/School/school-lessons-and-certificates" />
             <option value="$PROJECT_DIR$/School/school-student-app" />
           </set>

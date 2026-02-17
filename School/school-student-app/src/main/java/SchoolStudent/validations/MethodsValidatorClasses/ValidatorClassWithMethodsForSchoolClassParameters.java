@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -18,6 +19,12 @@ public class ValidatorClassWithMethodsForSchoolClassParameters {
     public Optional<ValidationError> numberMustNotBeEmpty(Long number) {
         return (number == null)
                 ? Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_10"))
+                : Optional.empty();
+    }
+
+    public Optional<ValidationError> validateSchoolClassIds(List<Long> schoolClassIds){
+        return (schoolClassIds.isEmpty())
+                ? Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_24"))
                 : Optional.empty();
     }
 
@@ -35,13 +42,13 @@ public class ValidatorClassWithMethodsForSchoolClassParameters {
     }
 
     public Optional<ValidationError> suchSchoolClassIsNotExist(Long number, String category){
-        return (schoolClassRepository.findByNumberAndCategory(number,category).isEmpty())
+        return (!schoolClassRepository.existsByNumberAndCategory(number,category))
                 ? Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_22"))
                 : Optional.empty();
     }
 
     public Optional<ValidationError> suchSchoolClassAlreadyExist(Long number, String category){
-        return (schoolClassRepository.findByNumberAndCategory(number,category).isPresent())
+        return (schoolClassRepository.existsByNumberAndCategory(number,category))
         ? Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_21"))
         : Optional.empty();
     }
