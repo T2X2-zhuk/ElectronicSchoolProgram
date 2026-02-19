@@ -21,7 +21,7 @@ public class RegistrationStudentValidator {
     private final ValidatorClassWithMethodsForSchoolClassParameters validatorClassWithMethodsForSchoolClassParameters;
     private final ValidatorClassWithMethodsForSpecificCodeForRegistrationInElectronicSchoolParameters validatorClassWithMethodsForSpecificCodeForRegistrationInElectronicSchoolParameters;
 
-    public List<ValidationError> validationErrorsList(RegistrationStudentRequest request) {
+    public List<ValidationError> validate(RegistrationStudentRequest request) {
         List<ValidationError> errorDTOS = new ArrayList<>();
         validateFirstNameLastNameFatherland(errorDTOS, request);
         validateEmail(errorDTOS, request);
@@ -35,24 +35,6 @@ public class RegistrationStudentValidator {
         validatorClassWithMethodsForSchoolStudentParameters.firstNameMustNotBeEmpty(request.getSchoolStudentDTO().getFirstName()).ifPresent(errorDTOS::add);
         validatorClassWithMethodsForSchoolStudentParameters.lastNameMustNotBeEmpty(request.getSchoolStudentDTO().getLastName()).ifPresent(errorDTOS::add);
         validatorClassWithMethodsForSchoolStudentParameters.fatherlandMustNotBeEmpty(request.getSchoolStudentDTO().getFatherland()).ifPresent(errorDTOS::add);
-    }
-
-    private void validateSchoolClassParameters(List<ValidationError> errorDTOS,RegistrationStudentRequest request) {
-        validatorClassWithMethodsForSchoolClassParameters.numberMustNotBeEmpty(request.getSchoolStudentDTO().getSchoolClassDTO().getNumber()).ifPresent(errorDTOS::add);
-        validatorClassWithMethodsForSchoolClassParameters.categoryMustNotBeEmpty(request.getSchoolStudentDTO().getSchoolClassDTO().getCategory()).ifPresent(errorDTOS::add);
-        if (errorDTOS.isEmpty()) {
-            validatorClassWithMethodsForSchoolClassParameters.fieldCategoryClassMustContainOneCapitalEnglishLetter(request.getSchoolStudentDTO().getSchoolClassDTO().getCategory()).ifPresent(errorDTOS::add);
-            if (errorDTOS.isEmpty()){
-                validatorClassWithMethodsForSchoolClassParameters.suchSchoolClassIsNotExist(request.getSchoolStudentDTO().getSchoolClassDTO().getNumber(),request.getSchoolStudentDTO().getSchoolClassDTO().getCategory()).ifPresent(errorDTOS::add);
-            }
-        }
-    }
-
-    private void validateSpecificCode(List<ValidationError> errorDTOS,RegistrationStudentRequest request) {
-        validatorClassWithMethodsForSpecificCodeForRegistrationInElectronicSchoolParameters.mustNotBeEmptySpecialCode(request.getSpecificCodeForRegistrationInElectronicSchoolDTO().getSpecificCodeForRegistrationForStudent()).ifPresent(errorDTOS::add);
-        if (errorDTOS.isEmpty()) {
-            validatorClassWithMethodsForSpecificCodeForRegistrationInElectronicSchoolParameters.validateSpecificCodeForStudent(request.getSpecificCodeForRegistrationInElectronicSchoolDTO().getSpecificCodeForRegistrationForStudent()).ifPresent(errorDTOS::add);
-        }
     }
 
     private void validateEmail(List<ValidationError> errorDTOS,RegistrationStudentRequest request) {
@@ -71,4 +53,23 @@ public class RegistrationStudentValidator {
             validatorClassWithMethodsForSchoolStudentParameters.suchPasswordAlreadyExists(request.getSchoolStudentDTO().getPassword()).ifPresent(errorDTOS::add);
         }
     }
+
+    private void validateSpecificCode(List<ValidationError> errorDTOS,RegistrationStudentRequest request) {
+        validatorClassWithMethodsForSpecificCodeForRegistrationInElectronicSchoolParameters.mustNotBeEmptySpecialCode(request.getSpecificCodeForRegistrationInElectronicSchoolDTO().getSpecificCodeForRegistrationForStudent()).ifPresent(errorDTOS::add);
+        if (errorDTOS.isEmpty()) {
+            validatorClassWithMethodsForSpecificCodeForRegistrationInElectronicSchoolParameters.validateSpecificCodeForStudent(request.getSpecificCodeForRegistrationInElectronicSchoolDTO().getSpecificCodeForRegistrationForStudent()).ifPresent(errorDTOS::add);
+        }
+    }
+
+    private void validateSchoolClassParameters(List<ValidationError> errorDTOS,RegistrationStudentRequest request) {
+        validatorClassWithMethodsForSchoolClassParameters.numberMustNotBeEmpty(request.getSchoolStudentDTO().getSchoolClassDTO().getNumber()).ifPresent(errorDTOS::add);
+        validatorClassWithMethodsForSchoolClassParameters.categoryMustNotBeEmpty(request.getSchoolStudentDTO().getSchoolClassDTO().getCategory()).ifPresent(errorDTOS::add);
+        if (errorDTOS.isEmpty()) {
+            validatorClassWithMethodsForSchoolClassParameters.fieldCategoryClassMustContainOneCapitalEnglishLetter(request.getSchoolStudentDTO().getSchoolClassDTO().getCategory()).ifPresent(errorDTOS::add);
+            if (errorDTOS.isEmpty()){
+                validatorClassWithMethodsForSchoolClassParameters.suchSchoolClassIsNotExist(request.getSchoolStudentDTO().getSchoolClassDTO().getNumber(),request.getSchoolStudentDTO().getSchoolClassDTO().getCategory()).ifPresent(errorDTOS::add);
+            }
+        }
+    }
+
 }

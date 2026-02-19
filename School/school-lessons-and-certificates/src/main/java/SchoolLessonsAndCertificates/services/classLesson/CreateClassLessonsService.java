@@ -32,7 +32,17 @@ public class CreateClassLessonsService {
         }
         Lesson lesson = lessonRepository
                 .findByName(request.getLessonDTO().getName()).orElseThrow();
-        List<ClassLesson> classLessons = request.getSchoolClassIds().stream()
+        List<Long> filteredIds = filterSchoolClassIds(request.getSchoolClassIds(),lesson.getName());
+        if (filteredIds.isEmpty()) {
+            return CreateClassLessonsResponse.builder()
+                    .message("All selected classes already contain this lesson.")
+                    .build();
+        }
+        return saveAllClassLessons(filteredIds, lesson);
+    }
+
+    private CreateClassLessonsResponse saveAllClassLessons(List<Long> filteredIds, Lesson lesson) {
+        List<ClassLesson> classLessons = filteredIds.stream()
                 .map(classId -> ClassLesson.builder()
                         .schoolClassId(classId)
                         .lesson(lesson)
@@ -43,5 +53,14 @@ public class CreateClassLessonsService {
         return CreateClassLessonsResponse.builder()
                 .message("Class lessons successfully created.")
                 .build();
+    }
+
+    private List<Long> filterSchoolClassIds(List<Long> schoolClassIds,String lessonName){
+        return schoolClassIds.stream()
+                .filter(classId ->
+                        !classLessonRepository
+                                .existsBySchoolClassIdAndLesson_Name(classId, lessonName)
+                )
+                .toList();
     }
 }

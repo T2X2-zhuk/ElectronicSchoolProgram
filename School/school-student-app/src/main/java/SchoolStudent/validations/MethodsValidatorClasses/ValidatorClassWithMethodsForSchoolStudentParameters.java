@@ -44,7 +44,7 @@ public class ValidatorClassWithMethodsForSchoolStudentParameters {
     }
 
     public Optional<ValidationError> suchEmailAlreadyExists(String email) {
-        return (studentRepository.findByEmail(email).isPresent())
+        return (studentRepository.existsByEmail(email))
                 ? Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_6"))
                 : Optional.empty();
     }
@@ -80,7 +80,7 @@ public class ValidatorClassWithMethodsForSchoolStudentParameters {
         List<String> emailFilter = Optional.ofNullable(emails)
                 .orElse(Collections.emptyList())
                 .stream()
-                .filter(email -> studentRepository.findByEmail(email).isPresent())
+                .filter(studentRepository::existsByEmail)
                 .toList();
         if (emailFilter.isEmpty()) {
             return Optional.of(errorFactory.buildError("SCHOOL_STUDENT_ERROR_CODE_4"));

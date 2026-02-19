@@ -29,21 +29,22 @@ public class CreateClassLessonsValidator {
         validatorClassWithMethodsForClassLessonParameters.validateListSchoolClassDTOs(request.getSchoolClassDTOS()).ifPresent(errors ::add);
         if (errors.isEmpty()){
             validatorClassWithMethodsForLesson.isLessonInDatabaseError(request.getLessonDTO().getName()).ifPresent(errors ::add);
-            sendDTOsToMicroservice(request, errors);
+            if (errors.isEmpty()) {
+                sendDTOsToMicroservice(request, errors);
+            }
         }
         return errors;
     }
 
     private void sendDTOsToMicroservice(CreateClassLessonsRequest request, List<ValidationError> errors) {
-        if (errors.isEmpty()){
-            GetSchoolClassIdsResponse response = microserviceGetStudentsIds.execute(
-                    GetSchoolClassIdsRequest.builder()
-                            .schoolClassDTOS(request.getSchoolClassDTOS()).build());
-            if (errors.isEmpty()){
-                request.setSchoolClassIds(response.getStudentsIds());
-            }else {
-                errors.addAll(response.getErrors());
-            }
+        GetSchoolClassIdsResponse response = microserviceGetStudentsIds.execute(
+                GetSchoolClassIdsRequest.builder()
+                        .schoolClassDTOS(request.getSchoolClassDTOS()).build());
+        if (response.hasErrors()) {
+            errors.addAll(response.getErrors());
+
+        }else{
+            request.setSchoolClassIds(response.getStudentsIds());
         }
     }
 }

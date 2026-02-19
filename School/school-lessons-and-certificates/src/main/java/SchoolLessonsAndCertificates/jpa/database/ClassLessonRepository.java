@@ -11,4 +11,5 @@ public interface ClassLessonRepository extends JpaRepository<ClassLesson,Long> {
     List<ClassLesson> findBySchoolClassId(Long schoolClassId);
 
     boolean existsBySchoolClassId(Long schoolClassId);
+    boolean existsBySchoolClassIdAndLesson_Name(Long schoolClassId, String lessonName);
 }

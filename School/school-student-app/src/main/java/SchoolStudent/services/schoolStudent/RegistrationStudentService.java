@@ -31,7 +31,7 @@ public class RegistrationStudentService {
 
     @Transactional
     public RegistrationStudentResponse execute(RegistrationStudentRequest request) {
-        List<ValidationError> validationErrors = validator.validationErrorsList(request);
+        List<ValidationError> validationErrors = validator.validate(request);
         if (!validationErrors.isEmpty()) {
             return RegistrationStudentResponse.builder().errors(validationErrors).build();
         }

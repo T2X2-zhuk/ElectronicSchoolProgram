@@ -23,6 +23,7 @@ public interface SchoolStudentRepository extends JpaRepository<SchoolStudent,Lon
     Optional<SchoolStudent> findByPassword(String password);
 
     boolean existsByPassword(String password);
+    boolean existsByEmail(String password);
 
     @Modifying
     @Query("DELETE FROM SchoolStudent st WHERE st.email = :email")
