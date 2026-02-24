@@ -1,6 +1,4 @@
 plugins {
-    id 'java'
-    id 'idea'
     id 'org.springframework.boot' version "3.4.5"
     id 'com.palantir.docker' version '0.36.0'
 }
@@ -8,14 +6,6 @@ java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(21))
     }
-}
-
-compileJava {
-    options.encoding = "UTF-8"
-}
-
-compileTestJava {
-    options.encoding = "UTF-8"
 }
 ext {
     set("springBootVersion", "3.4.5")
@@ -39,9 +29,6 @@ dependencies {
     testCompileOnly('org.projectlombok:lombok:1.18.32')
     testAnnotationProcessor('org.projectlombok:lombok:1.18.32')
     testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
-    testImplementation('org.hamcrest:hamcrest:2.2')
-    testImplementation('uk.org.webcompere:model-assert:1.0.0')
-    testImplementation ('org.junit.jupiter:junit-jupiter-api:5.8.1')
 }
 
 clean.doFirst {
@@ -69,9 +56,6 @@ task createLogsDirs {
             }
         }
     }
-}
-test {
-    useJUnitPlatform()
 }
 
 jar {
